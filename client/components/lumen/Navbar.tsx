@@ -16,13 +16,13 @@ export default function Navbar() {
             </a>
             <div className="hidden md:flex items-center gap-2">
               <a
-                href="#features"
+                href="/#features"
                 className="px-4 py-2 rounded-lg hover:bg-secondary text-sm font-medium"
               >
                 Features
               </a>
               <a
-                href="#demo"
+                href="/#demo"
                 className="px-4 py-2 rounded-lg hover:bg-secondary text-sm font-medium"
               >
                 Demo
@@ -34,7 +34,7 @@ export default function Navbar() {
                 Documentation
               </a>
               <a
-                href="#contact"
+                href="/#contact"
                 className="px-4 py-2 rounded-lg hover:bg-secondary text-sm font-medium"
               >
                 Contact
@@ -47,7 +47,7 @@ export default function Navbar() {
               </a>
             </div>
             <div className="flex items-center gap-2">
-              <a href="#demo" className="btn-cta">
+              <a href="/#demo" className="btn-cta">
                 Try LUMEN
               </a>
             </div>

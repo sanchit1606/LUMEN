@@ -2,19 +2,8 @@ import React, { Suspense } from "react";
 import { motion } from "framer-motion";
 import { Mic, Image as ImageIcon, Upload, BadgeAlert } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
 import LabAnalyzer from "./LabAnalyzer";
-
-function RotatingCube() {
-  return (
-    <mesh rotation={[0.4, 0.7, 0]}>
-      <boxGeometry args={[1.4, 1.4, 1.4]} />
-      <meshStandardMaterial color="#1B8EE6" metalness={0.4} roughness={0.2} />
-      <pointLight position={[5, 5, 5]} intensity={1.2} />
-    </mesh>
-  );
-}
+import PyramidLoader from "./PyramidLoader";
 
 function Card({ children }: { children: React.ReactNode }) {
   return (
@@ -146,25 +135,10 @@ export default function Features() {
               <p className="mt-1 text-sm font-bold text-brand-blue">
                 Custom PEARL Architecture (Computer Vision)
               </p>
-              <div className="mt-3 h-48 rounded-xl bg-secondary overflow-hidden">
-                <Suspense
-                  fallback={
-                    <div className="h-full grid place-items-center text-sm text-muted-foreground">
-                      Loading 3D…
-                    </div>
-                  }
-                >
-                  <Canvas camera={{ position: [2.8, 2.8, 2.8] }}>
-                    <ambientLight intensity={0.6} />
-                    <RotatingCube />
-                    <OrbitControls
-                      enablePan={false}
-                      enableZoom={false}
-                      autoRotate
-                      autoRotateSpeed={1.2}
-                    />
-                  </Canvas>
-                </Suspense>
+              <div className="mt-3 rounded-xl bg-secondary grid place-items-center py-6">
+                <div className="scale-90 sm:scale-100">
+                  <PyramidLoader />
+                </div>
               </div>
               <p className="mt-3 text-sm text-muted-foreground">
                 Open dedicated PEARL page →

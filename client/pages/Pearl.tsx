@@ -3,6 +3,7 @@ import Navbar from "@/components/lumen/Navbar";
 import Footer from "@/components/lumen/Footer";
 import Particles from "@/components/ui/particles";
 import { Link } from "react-router-dom";
+import PyramidLoader from "@/components/lumen/PyramidLoader";
 
 export default function PearlPage() {
   return (
@@ -24,6 +25,12 @@ export default function PearlPage() {
                       PEARL
                     </span>
                   </h1>
+                  <p className="mt-2 text-sm sm:text-base font-medium text-brand-blue">
+                    Personalized Estimated Anatomic Reconstruction
+                  </p>
+                  <div className="mt-6 flex justify-center">
+                    <PyramidLoader />
+                  </div>
                   <p className="mt-4 text-lg text-muted-foreground">
                     3D CT Low‑Dose Reconstruction & Viewer
                   </p>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   BookOpen,
   Cpu,
@@ -7,10 +7,16 @@ import {
   Link2,
   Github,
   Linkedin,
+  User as UserIcon,
+  Mic,
+  Image as ImageIcon,
+  Upload,
+  BadgeAlert,
 } from "lucide-react";
 
 import ZoomableImage from "./ZoomableImage";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { AnimatedBeam } from "./AnimatedBeam";
 
 function Card({
   title,
@@ -24,6 +30,103 @@ function Card({
       <h3 className="text-lg font-semibold flex items-center gap-2">{title}</h3>
       <div className="mt-3 text-sm text-muted-foreground space-y-3">
         {children}
+      </div>
+    </div>
+  );
+}
+
+function BeamShowcase() {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const userRef = useRef<HTMLDivElement | null>(null);
+  const openaiRef = useRef<HTMLDivElement | null>(null);
+  const featureRefs = [
+    useRef<HTMLDivElement | null>(null),
+    useRef<HTMLDivElement | null>(null),
+    useRef<HTMLDivElement | null>(null),
+    useRef<HTMLDivElement | null>(null),
+  ];
+
+  const features = [
+    { label: "Audio", Icon: Mic },
+    { label: "Image", Icon: ImageIcon },
+    { label: "Upload", Icon: Upload },
+    { label: "Alerts", Icon: BadgeAlert },
+  ];
+
+  return (
+    <div ref={containerRef} className="relative h-72 w-full">
+      {/* Beams */}
+      <AnimatedBeam
+        containerRef={containerRef}
+        fromRef={userRef}
+        toRef={openaiRef}
+        curvature={-60}
+        pathColor="#60A5FA"
+        pathWidth={2}
+        gradientStartColor="#60A5FA"
+        gradientStopColor="#22D3EE"
+      />
+      {featureRefs.map((ref, i) => (
+        <AnimatedBeam
+          key={i}
+          containerRef={containerRef}
+          fromRef={openaiRef}
+          toRef={ref}
+          curvature={-40 - i * 6}
+          delay={i * 0.2}
+          pathColor="#60A5FA"
+          pathWidth={2}
+          gradientStartColor="#60A5FA"
+          gradientStopColor="#22D3EE"
+        />
+      ))}
+
+      {/* Nodes */}
+      <div className="absolute inset-0 grid grid-cols-[1fr_auto_1fr] items-center">
+        {/* Left: User */}
+        <div className="flex flex-col items-center">
+          <div
+            ref={userRef}
+            className="ml-2 size-16 rounded-full bg-secondary border border-border shadow grid place-items-center"
+          >
+            <UserIcon className="text-brand-blue" />
+          </div>
+          <span className="mt-2 text-sm font-medium">User</span>
+        </div>
+
+        {/* Center: OpenAI */}
+        <div className="flex flex-col items-center">
+          <div
+            ref={openaiRef}
+            className="size-20 rounded-full bg-gradient-to-tr from-brand-blue/20 to-brand-teal/30 border border-border shadow grid place-items-center"
+          >
+            <img
+              src="https://cdn.simpleicons.org/openai/1B8EE6"
+              alt="OpenAI"
+              className="h-6 w-6"
+            />
+          </div>
+          <div className="mt-2 inline-flex items-center text-xs text-muted-foreground">
+            <Link2 className="mr-1 h-3 w-3" /> LUMEN Runtime
+          </div>
+        </div>
+
+        {/* Right: Features */}
+        <div className="flex justify-end pr-2">
+          <div className="grid gap-3">
+            {features.map(({ label, Icon }, idx) => (
+              <div key={label} className="flex items-center gap-2 justify-end">
+                <div
+                  ref={featureRefs[idx]}
+                  className="size-12 rounded-full bg-white shadow border border-border grid place-items-center"
+                >
+                  <Icon className="text-brand-blue" size={18} />
+                </div>
+                <span className="text-sm">{label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -115,6 +218,12 @@ export default function Technical() {
   return (
     <section id="technical" className="py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mt-6 grid lg:grid-cols-1 gap-6">
+          <Card title="LUMEN ↔ OpenAI Feature Flow">
+            <BeamShowcase />
+          </Card>
+        </div>
+
         <div className="mt-10 grid lg:grid-cols-2 gap-6">
           <Card title="Problem Statement">
             <ul className="list-disc pl-5 space-y-1">
@@ -281,11 +390,7 @@ export default function Technical() {
 
         {/* Team LUMEN Section */}
         <div className="mt-20">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-black text-foreground">Team LUMEN</h2>
-          </div>
-
-          <div className="flex justify-center w-full overflow-x-auto">
+          <div className="relative flex justify-center w-full overflow-x-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10 max-w-[1600px] px-6 justify-items-center">
               <TeamCard
                 name="Sanchit"
