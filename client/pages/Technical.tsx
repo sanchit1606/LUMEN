@@ -20,7 +20,7 @@ export default function TechnicalPage() {
       <main className="pt-24 relative z-10">
         <section className="py-12">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-center">
+            <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-center video-text">
               Technical Documentation
             </h1>
             <p className="mt-3 text-center text-muted-foreground max-w-2xl mx-auto">
