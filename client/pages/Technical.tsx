@@ -2,20 +2,11 @@ import React from "react";
 import Navbar from "@/components/lumen/Navbar";
 import Footer from "@/components/lumen/Footer";
 import TechnicalContent from "@/components/lumen/Technical";
-import { FlickeringGrid } from "@/components/magicui/flickering-grid";
+// Removed FlickeringGrid for default page background
 
 export default function TechnicalPage() {
   return (
     <div className="relative">
-      <FlickeringGrid
-        className="absolute inset-0 -z-10 size-full pointer-events-none"
-        squareSize={4}
-        gridGap={6}
-        color="#60A5FA"
-        maxOpacity={0.5}
-        flickerChance={0.1}
-        speed={0.15}
-      />
       <Navbar />
       <main className="pt-24 relative z-10">
         <section className="py-12">
