@@ -284,16 +284,121 @@ export default function Technical() {
               CT reconstruction previews, lab report interpretation, and mapping
               citizens to government schemes.
             </p>
-            <div className="mt-4 flex items-center justify-center">
+            <div className="mt-4 flex items-center justify-center gap-4">
               <a
                 href="https://cdn.builder.io/o/assets%2Fe8cc9787598e48f9b1b2ad55c5185cb9%2F571a64ddd41b44f284f7d10cabf79f52?alt=media&token=4b269a9a-f6c3-4192-b784-d6c79921c82c&apiKey=e8cc9787598e48f9b1b2ad55c5185cb9"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-cta"
+                className="download-button"
               >
-                View DOCX
+                <div className="docs">
+                  <span>View DOCX</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7,10 12,15 17,10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                </div>
+                <div className="download">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7,10 12,15 17,10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                </div>
               </a>
+              <div className="group relative">
+                <a
+                  href="https://github.com/sanchit1606/LUMEN.git"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button>
+                    <svg strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" className="w-8 hover:scale-125 duration-200 hover:stroke-blue-500">
+                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                  </button>
+                </a>
+                <span className="absolute -top-14 left-[50%] -translate-x-[50%] z-20 origin-left scale-0 px-3 rounded-lg border border-gray-300 bg-white py-2 text-sm font-bold shadow-md transition-all duration-300 ease-in-out group-hover:scale-100">
+                  GitHub
+                </span>
+              </div>
             </div>
+            <style>
+              {`/* From Uiverse.io by barisdogansutcu */
+              .download-button {
+                position: relative;
+                border-width: 0;
+                color: white;
+                font-size: 15px;
+                font-weight: 600;
+                cursor: pointer;
+                border-radius: 4px;
+                z-index: 1;
+              }
+
+              .download-button .docs {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 10px;
+                min-height: 40px;
+                padding: 0 10px;
+                border-radius: 4px;
+                z-index: 1;
+                background-color: #242a35;
+                border: solid 1px #e8e8e82d;
+                transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+              }
+
+              .download-button:hover {
+                box-shadow:
+                  rgba(0, 0, 0, 0.25) 0px 54px 55px,
+                  rgba(0, 0, 0, 0.12) 0px -12px 30px,
+                  rgba(0, 0, 0, 0.12) 0px 4px 6px,
+                  rgba(0, 0, 0, 0.17) 0px 12px 13px,
+                  rgba(0, 0, 0, 0.09) 0px -3px 5px;
+              }
+
+              .download {
+                position: absolute;
+                inset: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                max-width: 90%;
+                margin: 0 auto;
+                z-index: -1;
+                border-radius: 4px;
+                transform: translateY(0%);
+                background-color: #01e056;
+                border: solid 1px #01e0572d;
+                transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+              }
+
+              .download-button:hover .download {
+                transform: translateY(100%);
+              }
+
+              .download svg polyline,
+              .download svg line {
+                animation: docs 1s infinite;
+              }
+
+              @keyframes docs {
+                0% {
+                  transform: translateY(0%);
+                }
+
+                50% {
+                  transform: translateY(-15%);
+                }
+
+                100% {
+                  transform: translateY(0%);
+                }
+              }`}
+            </style>
           </div>
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="rounded-lg border p-3 bg-secondary/40">
@@ -437,22 +542,6 @@ export default function Technical() {
           </Card>
         </div>
 
-        {/* Proposed Solution – Overview */}
-        <div id="solution" className="mt-6 grid lg:grid-cols-1 gap-6">
-          <Card title="Proposed Solution – Overview of Features">
-            <ul className="list-disc pl-5 space-y-1">
-              <li>Symptoms‑based triage with severity bands and next steps.</li>
-              <li>
-                AI specialist modules (dermatology, radiology, cardiology).
-              </li>
-              <li>Multilingual, voice‑first chatbot.</li>
-              <li>PEARL CT reconstruction previews.</li>
-              <li>Lab report analyzer with follow‑up generation.</li>
-              <li>Government schemes & benefits assistant.</li>
-              <li>Preliminary triage & emergency education.</li>
-            </ul>
-          </Card>
-        </div>
 
         {/* Proposed Solution – Interactive Architecture Diagram */}
         <div id="architecture" className="mt-6 grid lg:grid-cols-1 gap-6">
@@ -472,6 +561,11 @@ export default function Technical() {
           <Card title="Features">
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <Stethoscope className="text-brand-blue" />
+                <div>
+                  <div className="font-medium">
+                    4.1 Symptoms‑Based Diagnosis & Guidance
                 <div className="flex items-start gap-3">
                   <Stethoscope className="text-brand-blue" />
                   <div>
@@ -498,6 +592,13 @@ export default function Technical() {
                   </div>
                 </div>
               </div>
+              </div>
+              <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <Activity className="text-brand-teal" />
+                <div>
+                  <div className="font-medium">4.4 PEARL CT Reconstruction</div>
+                  <p>Low‑dose previews with guidance.</p>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <Activity className="text-brand-teal" />
@@ -531,6 +632,8 @@ export default function Technical() {
                       4.7 Preliminary Triage & Emergency Education
                     </div>
                     <p>Audio‑guided first aid tiles.</p>
+                  </div>
+                  <p>Audio‑guided first aid tiles.</p>
                   </div>
                 </div>
               </div>
@@ -602,6 +705,122 @@ export default function Technical() {
           </div>
         </div>
 
+        {/* Tech Stack (Prior) */}
+        <div id="techstack-prior" className="mt-6">
+          <div className="grid lg:grid-cols-1 gap-6">
+            <Card title="Tech Stack (Prior)">
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm table-auto">
+                  <thead>
+                    <tr className="text-left text-xs text-muted-foreground">
+                      <th className="px-3 py-2">Layer</th>
+                      <th className="px-3 py-2">Technology / Tools Used</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-t">
+                      <td className="px-3 py-2 align-top">Frontend</td>
+                        <td className="px-3 py-2 align-top">
+                        React (TypeScript) + Next.js, Tailwind CSS (for UI), Multilingual support
+                        </td>
+                    </tr>
+                    <tr className="border-t">
+                      <td className="px-3 py-2 align-top">Backend / API</td>
+                        <td className="px-3 py-2 align-top">
+                        FastAPI (Python) – REST/GraphQL API server, integrates AI/ML models and handles routing
+                        </td>
+                      </tr>
+                      <tr className="border-t">
+                      <td className="px-3 py-2 align-top">Database</td>
+                        <td className="px-3 py-2 align-top">
+                        PostgreSQL (structured medical records, lab values, CT metadata)
+                        </td>
+                    </tr>
+                    <tr className="border-t">
+                      <td className="px-3 py-2 align-top">Cache & Queue</td>
+                        <td className="px-3 py-2 align-top">
+                        Redis (cache + task queue) + Celery (background jobs like CT reconstruction, PDF parsing)
+                        </td>
+                      </tr>
+                      <tr className="border-t">
+                      <td className="px-3 py-2 align-top">Vector Database</td>
+                        <td className="px-3 py-2 align-top">
+                        Weaviate / Pinecone (semantic search on medical guidelines, govt schemes)
+                        </td>
+                      </tr>
+                      <tr className="border-t">
+                      <td className="px-3 py-2 align-top">Object Storage</td>
+                        <td className="px-3 py-2 align-top">
+                        AWS S3 / MinIO (self-hosted alternative) – for CT scans, lab reports, medical images
+                        </td>
+                      </tr>
+                      <tr className="border-t">
+                      <td className="px-3 py-2 align-top">AI/ML Core</td>
+                        <td className="px-3 py-2 align-top">
+                        PyTorch + Hugging Face Transformers (embeddings, multilingual models, PEARL CT, dermatology AI, lab parser) + OpenAI APIs (GPT-4o, Whisper, DALL·E)
+                        </td>
+                      </tr>
+                      <tr className="border-t">
+                      <td className="px-3 py-2 align-top">Security</td>
+                        <td className="px-3 py-2 align-top">
+                        JWT + OAuth2, TLS/SSL, AES-256 encryption, HIPAA/GDPR compliance
+                        </td>
+                      </tr>
+                      <tr className="border-t">
+                      <td className="px-3 py-2 align-top">Infrastructure & Deployment</td>
+                        <td className="px-3 py-2 align-top">
+                        Docker + Kubernetes (K8s) on AWS/GCP/Azure with GPU nodes; CDN for static assets
+                        </td>
+                      </tr>
+                      <tr className="border-t">
+                        <td className="px-3 py-2 align-top">AI Specialist Summaries</td>
+                        <td className="px-3 py-2 align-top">gpt-4o-mini</td>
+                        <td className="px-3 py-2 align-top">Summarizes AI-ML Model outputs into doctor-style report</td>
+                      </tr>
+                      <tr className="border-t">
+                        <td className="px-3 py-2 align-top">Lab Report Analyzer</td>
+                        <td className="px-3 py-2 align-top">gpt-4o</td>
+                        <td className="px-3 py-2 align-top">Interprets OCR lab values and explains results in patient-friendly terms</td>
+                      </tr>
+                      <tr className="border-t">
+                        <td className="px-3 py-2 align-top">Govt Schemes Assistant</td>
+                        <td className="px-3 py-2 align-top">text-embedding-3-small + gpt-4o-mini</td>
+                        <td className="px-3 py-2 align-top">Retrieves and explains govt health scheme eligibility in simple language.</td>
+                      </tr>
+                      <tr className="border-t">
+                        <td className="px-3 py-2 align-top">Emergency Protocols</td>
+                        <td className="px-3 py-2 align-top">gpt-4o-mini</td>
+                        <td className="px-3 py-2 align-top">Gives fast, step-by-step emergency medical instructions.</td>
+                      </tr>
+                      <tr className="border-t">
+                        <td className="px-3 py-2 align-top">Voice Input (ASR)</td>
+                        <td className="px-3 py-2 align-top">whisper-1</td>
+                        <td className="px-3 py-2 align-top">Converts patient speech to text for symptom entry</td>
+                      </tr>
+                      <tr className="border-t">
+                        <td className="px-3 py-2 align-top">Voice Output (TTS)</td>
+                        <td className="px-3 py-2 align-top">gpt-4o-audio / Azure TTS</td>
+                        <td className="px-3 py-2 align-top">Delivers AI responses as a natural voice for accessibility.</td>
+                      </tr>
+                      <tr className="border-t">
+                        <td className="px-3 py-2 align-top">Chatbot</td>
+                        <td className="px-3 py-2 align-top">gpt-4o</td>
+                        <td className="px-3 py-2 align-top">Provides 24/7 conversational support, guiding users across triage, lab results, schemes, and emergencies</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              <div className="mt-6 flex justify-center">
+                <TechStackGrid />
+              </div>
+            </Card>
+          </div>
+        </div>
+
+        {/* Feasibility */}
+        <div id="feasibility" className="mt-6 grid lg:grid-cols-1 gap-6">
+          <Card title="Feasibility">
+                <div className="grid sm:grid-cols-2 gap-4 text-sm">
         {/* Tech Stack (Prior) */}
         <div id="techstack-prior" className="mt-6">
           <div className="grid lg:grid-cols-1 gap-6">
@@ -703,6 +922,58 @@ export default function Technical() {
                     </ul>
                   </div>
                   <p className="mt-2">Assessment: Existing technologies are sufficient. Only CT reconstruction pipeline requires GPU resources, which are available on cloud platforms.</p>
+                  </div>
+                <div className="p-4 bg-card/80 border border-border rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 hover:scale-105 transition-all duration-300">
+                  <div className="font-medium">7.2 Operational Feasibility</div>
+                  <div className="mt-2">
+                    <div className="font-medium">Problem Fit:</div>
+                    <p>Addresses rural healthcare gaps (900M+ residents), triage delays, and lab follow-up inefficiencies.</p>
+                  </div>
+                  <div className="mt-2">
+                    <div className="font-medium">Ease of Operation:</div>
+                    <ul className="list-disc pl-5 space-y-1">
+                      <li>Multilingual voice-first chatbot lowers digital literacy barriers.</li>
+                      <li>Offline-first design ensures use even in low-connectivity areas.</li>
+                    </ul>
+                  </div>
+                  <p className="mt-2">Assessment: Operationally feasible, since workflows mirror real-world healthcare interactions (symptom → guidance → follow-up).</p>
+          </div>
+        </div>
+
+              {/* Right column */}
+              <div className="space-y-4">
+                <div className="p-4 bg-card/80 border border-border rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 hover:scale-105 transition-all duration-300">
+                  <div className="font-medium">7.3 Economic Feasibility</div>
+                  <div className="mt-2">
+                    <div className="font-medium">Prototype Cost:</div>
+                    <p>Minimal (free tiers: Hugging Face, Netlify, Firebase).</p>
+              </div>
+                  <div className="mt-2">
+                    <div className="font-medium">Production Cost:</div>
+                    <p>API usage (OpenAI GPT, Whisper), GPU compute (CT), and storage (AWS S3).</p>
+              </div>
+                  <div className="mt-2">
+                    <div className="font-medium">ROI:</div>
+                <ul className="list-disc pl-5 space-y-1">
+                      <li>Reducing preventable deaths (e.g., 58,000 annual snakebite fatalities).</li>
+                      <li>Saving costs from unnecessary clinic visits & repeated CT scans.</li>
+                </ul>
+              </div>
+                  <p className="mt-2">Assessment: Strong cost-benefit justification; socially impactful and scalable.</p>
+                </div>
+                <div className="p-4 bg-card/80 border border-border rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 hover:scale-105 transition-all duration-300">
+                <div className="font-medium">7.4 Legal Feasibility</div>
+                  <div className="mt-2">
+                    <div className="font-medium">Compliance Requirements:</div>
+                <ul className="list-disc pl-5 space-y-1">
+                      <li>Data protection → GDPR/HIPAA-like standards.</li>
+                      <li>Informed consent → required for data use.</li>
+                </ul>
+              </div>
+                  <p className="mt-2">Assessment: Legally feasible with proper compliance in production; no major barriers.</p>
+                </div>
+                <div className="p-4 bg-card/80 border border-border rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 hover:scale-105 transition-all duration-300">
+                <div className="font-medium">7.5 Market Feasibility</div>
                 </div>
                 <div className="p-4 bg-card/80 border border-border rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 hover:scale-105 transition-all duration-300">
                   <div className="font-medium">7.2 Operational Feasibility</div>
@@ -755,6 +1026,7 @@ export default function Technical() {
                 </div>
                 <div className="p-4 bg-card/80 border border-border rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 hover:scale-105 transition-all duration-300">
                   <div className="font-medium">7.5 Market Feasibility</div>
+
                   <div className="mt-2">
                     <div className="font-medium">Target Users:</div>
                     <p>900M+ rural/semi-urban Indians lacking timely healthcare.</p>
@@ -778,50 +1050,101 @@ export default function Technical() {
         <div id="novelty" className="mt-10">
           <div className="grid lg:grid-cols-1 gap-6">
             <Card title="Novelty">
-              <div className="space-y-4 text-sm">
-                <div>
-                  <div className="font-medium">Technical Novelties</div>
-                  <ol className="list-decimal pl-5 space-y-1">
-                    <li>
-                      PEARL CT Reconstruction: tri‑model pipeline (PerX2CT +
-                      XctDiff + SAX‑NeRF) for low‑dose CT estimation with
-                      voxel‑level uncertainty.
-                    </li>
-                    <li>
-                      Integrated AI Healthcare Engine combining triage,
-                      specialist modules, lab parsing, and scheme retrieval in
-                      one.
-                    </li>
-                    <li>
-                      Multilingual, voice‑first accessibility using Whisper +
-                      GPT for 5+ Indian languages.
-                    </li>
-                    <li>
-                      Grounded AI with medical guidelines and scheme KB to
-                      reduce hallucinations.
-                    </li>
-                  </ol>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* Card 1: PEARL CT Reconstruction */}
+                <div className="w-64 bg-white shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-9 space-y-3 relative overflow-hidden">
+                  <div className="w-24 h-24 bg-violet-500 rounded-full absolute -right-5 -top-7">
+                    <p className="absolute bottom-6 left-7 text-white text-2xl">01</p>
                 </div>
-                <div>
-                  <div className="font-medium">Practical Novelties</div>
-                  <ol className="list-decimal pl-5 space-y-1">
-                    <li>
-                      Emergency first‑aid & triage education with
-                      voice/text/visuals in local languages.
-                    </li>
-                    <li>
-                      Lab report analyzer with actionable, diet/lifestyle
-                      guidance.
-                    </li>
-                    <li>
-                      Government scheme assistant explaining eligibility and
-                      steps in local language.
-                    </li>
-                    <li>
-                      Optimized for rural/low‑connectivity via hybrid/on‑device
-                      design.
-                    </li>
-                  </ol>
+                  <div className="fill-violet-500 w-12">
+                    <svg viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg">
+                      <path d="m24,6.928v13.072h-11.5v3h5v1H6.5v-1h5v-3H0V4.5c0-1.379,1.122-2.5,2.5-2.5h12.98c-.253.295-.54.631-.856,1H2.5c-.827,0-1.5.673-1.5,1.5v14.5h22v-10.993l1-1.079Zm-12.749,3.094C19.058.891,19.093.855,19.11.838c1.118-1.115,2.936-1.113,4.052.002,1.114,1.117,1.114,2.936,0,4.052l-8.185,8.828c-.116,1.826-1.623,3.281-3.478,3.281h-5.59l.097-.582c.043-.257,1.086-6.16,5.244-6.396Zm2.749,3.478c0-1.379-1.122-2.5-2.5-2.5-2.834,0-4.018,3.569-4.378,5h4.378c1.378,0,2.5-1.121,2.5-2.5Zm.814-1.073l2.066-2.229c-.332-1.186-1.371-2.057-2.606-2.172-.641.749-1.261,1.475-1.817,2.125,1.117.321,1.998,1.176,2.357,2.277Zm.208-5.276c1.162.313,2.125,1.134,2.617,2.229l4.803-5.18c.737-.741.737-1.925.012-2.653-.724-.725-1.908-.727-2.637,0-.069.08-2.435,2.846-4.795,5.606Z"></path>
+                    </svg>
+                  </div>
+                  <h1 className="font-bold text-xl">PEARL CT Reconstruction</h1>
+                  <p className="text-sm text-zinc-500 leading-6">
+                    Tri-model pipeline (PerX2CT + XctDiff + SAX-NeRF) for low-dose CT estimation with voxel-level uncertainty
+                  </p>
+                </div>
+
+                {/* Card 2: Integrated AI Healthcare Engine */}
+                <div className="w-64 bg-white shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-9 space-y-3 relative overflow-hidden">
+                  <div className="w-24 h-24 bg-violet-500 rounded-full absolute -right-5 -top-7">
+                    <p className="absolute bottom-6 left-7 text-white text-2xl">02</p>
+                  </div>
+                  <div className="fill-violet-500 w-12">
+                    <svg viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg">
+                      <path d="m24,6.928v13.072h-11.5v3h5v1H6.5v-1h5v-3H0V4.5c0-1.379,1.122-2.5,2.5-2.5h12.98c-.253.295-.54.631-.856,1H2.5c-.827,0-1.5.673-1.5,1.5v14.5h22v-10.993l1-1.079Zm-12.749,3.094C19.058.891,19.093.855,19.11.838c1.118-1.115,2.936-1.113,4.052.002,1.114,1.117,1.114,2.936,0,4.052l-8.185,8.828c-.116,1.826-1.623,3.281-3.478,3.281h-5.59l.097-.582c.043-.257,1.086-6.16,5.244-6.396Zm2.749,3.478c0-1.379-1.122-2.5-2.5-2.5-2.834,0-4.018,3.569-4.378,5h4.378c1.378,0,2.5-1.121,2.5-2.5Zm.814-1.073l2.066-2.229c-.332-1.186-1.371-2.057-2.606-2.172-.641.749-1.261,1.475-1.817,2.125,1.117.321,1.998,1.176,2.357,2.277Zm.208-5.276c1.162.313,2.125,1.134,2.617,2.229l4.803-5.18c.737-.741.737-1.925.012-2.653-.724-.725-1.908-.727-2.637,0-.069.08-2.435,2.846-4.795,5.606Z"></path>
+                    </svg>
+                  </div>
+                  <h1 className="font-bold text-xl">Integrated AI Healthcare Engine</h1>
+                  <p className="text-sm text-zinc-500 leading-6">
+                    Combining triage, specialist modules, lab parsing, and scheme retrieval in one unified system
+                  </p>
+                </div>
+
+                {/* Card 3: Multilingual Voice-First */}
+                <div className="w-64 bg-white shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-9 space-y-3 relative overflow-hidden">
+                  <div className="w-24 h-24 bg-violet-500 rounded-full absolute -right-5 -top-7">
+                    <p className="absolute bottom-6 left-7 text-white text-2xl">03</p>
+                  </div>
+                  <div className="fill-violet-500 w-12">
+                    <svg viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg">
+                      <path d="m24,6.928v13.072h-11.5v3h5v1H6.5v-1h5v-3H0V4.5c0-1.379,1.122-2.5,2.5-2.5h12.98c-.253.295-.54.631-.856,1H2.5c-.827,0-1.5.673-1.5,1.5v14.5h22v-10.993l1-1.079Zm-12.749,3.094C19.058.891,19.093.855,19.11.838c1.118-1.115,2.936-1.113,4.052.002,1.114,1.117,1.114,2.936,0,4.052l-8.185,8.828c-.116,1.826-1.623,3.281-3.478,3.281h-5.59l.097-.582c.043-.257,1.086-6.16,5.244-6.396Zm2.749,3.478c0-1.379-1.122-2.5-2.5-2.5-2.834,0-4.018,3.569-4.378,5h4.378c1.378,0,2.5-1.121,2.5-2.5Zm.814-1.073l2.066-2.229c-.332-1.186-1.371-2.057-2.606-2.172-.641.749-1.261,1.475-1.817,2.125,1.117.321,1.998,1.176,2.357,2.277Zm.208-5.276c1.162.313,2.125,1.134,2.617,2.229l4.803-5.18c.737-.741.737-1.925.012-2.653-.724-.725-1.908-.727-2.637,0-.069.08-2.435,2.846-4.795,5.606Z"></path>
+                    </svg>
+                  </div>
+                  <h1 className="font-bold text-xl">Multilingual Voice-First</h1>
+                  <p className="text-sm text-zinc-500 leading-6">
+                    Accessibility using Whisper + GPT for 5+ Indian languages with voice-first interface
+                  </p>
+                </div>
+
+                {/* Card 4: Emergency Education */}
+                <div className="w-64 bg-white shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-9 space-y-3 relative overflow-hidden">
+                  <div className="w-24 h-24 bg-violet-500 rounded-full absolute -right-5 -top-7">
+                    <p className="absolute bottom-6 left-7 text-white text-2xl">04</p>
+                  </div>
+                  <div className="fill-violet-500 w-12">
+                    <svg viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg">
+                      <path d="m24,6.928v13.072h-11.5v3h5v1H6.5v-1h5v-3H0V4.5c0-1.379,1.122-2.5,2.5-2.5h12.98c-.253.295-.54.631-.856,1H2.5c-.827,0-1.5.673-1.5,1.5v14.5h22v-10.993l1-1.079Zm-12.749,3.094C19.058.891,19.093.855,19.11.838c1.118-1.115,2.936-1.113,4.052.002,1.114,1.117,1.114,2.936,0,4.052l-8.185,8.828c-.116,1.826-1.623,3.281-3.478,3.281h-5.59l.097-.582c.043-.257,1.086-6.16,5.244-6.396Zm2.749,3.478c0-1.379-1.122-2.5-2.5-2.5-2.834,0-4.018,3.569-4.378,5h4.378c1.378,0,2.5-1.121,2.5-2.5Zm.814-1.073l2.066-2.229c-.332-1.186-1.371-2.057-2.606-2.172-.641.749-1.261,1.475-1.817,2.125,1.117.321,1.998,1.176,2.357,2.277Zm.208-5.276c1.162.313,2.125,1.134,2.617,2.229l4.803-5.18c.737-.741.737-1.925.012-2.653-.724-.725-1.908-.727-2.637,0-.069.08-2.435,2.846-4.795,5.606Z"></path>
+                    </svg>
+                  </div>
+                  <h1 className="font-bold text-xl">Emergency Education</h1>
+                  <p className="text-sm text-zinc-500 leading-6">
+                    First-aid & triage education with voice/text/visuals in local languages for rural areas
+                  </p>
+                </div>
+
+                {/* Card 5: Government Schemes Assistant */}
+                <div className="w-64 bg-white shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-9 space-y-3 relative overflow-hidden">
+                  <div className="w-24 h-24 bg-violet-500 rounded-full absolute -right-5 -top-7">
+                    <p className="absolute bottom-6 left-7 text-white text-2xl">05</p>
+                  </div>
+                  <div className="fill-violet-500 w-12">
+                    <svg viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg">
+                      <path d="m24,6.928v13.072h-11.5v3h5v1H6.5v-1h5v-3H0V4.5c0-1.379,1.122-2.5,2.5-2.5h12.98c-.253.295-.54.631-.856,1H2.5c-.827,0-1.5.673-1.5,1.5v14.5h22v-10.993l1-1.079Zm-12.749,3.094C19.058.891,19.093.855,19.11.838c1.118-1.115,2.936-1.113,4.052.002,1.114,1.117,1.114,2.936,0,4.052l-8.185,8.828c-.116,1.826-1.623,3.281-3.478,3.281h-5.59l.097-.582c.043-.257,1.086-6.16,5.244-6.396Zm2.749,3.478c0-1.379-1.122-2.5-2.5-2.5-2.834,0-4.018,3.569-4.378,5h4.378c1.378,0,2.5-1.121,2.5-2.5Zm.814-1.073l2.066-2.229c-.332-1.186-1.371-2.057-2.606-2.172-.641.749-1.261,1.475-1.817,2.125,1.117.321,1.998,1.176,2.357,2.277Zm.208-5.276c1.162.313,2.125,1.134,2.617,2.229l4.803-5.18c.737-.741.737-1.925.012-2.653-.724-.725-1.908-.727-2.637,0-.069.08-2.435,2.846-4.795,5.606Z"></path>
+                    </svg>
+                  </div>
+                  <h1 className="font-bold text-xl">Government Schemes Assistant</h1>
+                  <p className="text-sm text-zinc-500 leading-6">
+                    Explaining eligibility and steps for government health schemes in local language
+                  </p>
+                </div>
+
+                {/* Card 6: Lab Report Analyzer */}
+                <div className="w-64 bg-white shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-9 space-y-3 relative overflow-hidden">
+                  <div className="w-24 h-24 bg-violet-500 rounded-full absolute -right-5 -top-7">
+                    <p className="absolute bottom-6 left-7 text-white text-2xl">06</p>
+                  </div>
+                  <div className="fill-violet-500 w-12">
+                    <svg viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg">
+                      <path d="m24,6.928v13.072h-11.5v3h5v1H6.5v-1h5v-3H0V4.5c0-1.379,1.122-2.5,2.5-2.5h12.98c-.253.295-.54.631-.856,1H2.5c-.827,0-1.5.673-1.5,1.5v14.5h22v-10.993l1-1.079Zm-12.749,3.094C19.058.891,19.093.855,19.11.838c1.118-1.115,2.936-1.113,4.052.002,1.114,1.117,1.114,2.936,0,4.052l-8.185,8.828c-.116,1.826-1.623,3.281-3.478,3.281h-5.59l.097-.582c.043-.257,1.086-6.16,5.244-6.396Zm2.749,3.478c0-1.379-1.122-2.5-2.5-2.5-2.834,0-4.018,3.569-4.378,5h4.378c1.378,0,2.5-1.121,2.5-2.5Zm.814-1.073l2.066-2.229c-.332-1.186-1.371-2.057-2.606-2.172-.641.749-1.261,1.475-1.817,2.125,1.117.321,1.998,1.176,2.357,2.277Zm.208-5.276c1.162.313,2.125,1.134,2.617,2.229l4.803-5.18c.737-.741.737-1.925.012-2.653-.724-.725-1.908-.727-2.637,0-.069.08-2.435,2.846-4.795,5.606Z"></path>
+                    </svg>
+                  </div>
+                  <h1 className="font-bold text-xl">Lab Report Analyzer</h1>
+                  <p className="text-sm text-zinc-500 leading-6">
+                    OCR-based lab report interpretation with actionable diet and lifestyle guidance recommendations
+                  </p>
                 </div>
               </div>
             </Card>
