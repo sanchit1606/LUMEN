@@ -1,4 +1,4 @@
-# LUMEN — Localized Unified Medical ENgine for Triage
+# LUMEN - Localized Unified Medical ENgine for Triage
 
 A modern, multilingual, AI‑powered healthcare assistant designed for India. LUMEN integrates triage, specialist guidance, PEARL CT reconstruction, lab report analysis, government scheme discovery, and emergency education into a single, accessible product.
 
