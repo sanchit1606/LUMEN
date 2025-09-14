@@ -48,6 +48,23 @@ India's rural healthcare system faces critical gaps that result in preventable d
 
 ### Women's Health & Menstrual Hygiene Gaps
 
+=======
+
+India's rural healthcare system faces critical gaps that result in preventable deaths, untreated conditions, and rising costs.
+
+### Limited Access & Workforce Shortage
+
+- Over 900 million rural residents (65% of the population) face inadequate infrastructure, with 16% fewer PHCs and 50% fewer CHCs than required
+- Shortages are severe: 8% PHCs lack doctors, 38% lack lab technicians, and workforce density is 20.6 per 10,000, far below the WHO norm of 44.5
+- Doctor/nurse/midwife density is 20.6 per 10,000 vs WHO recommendation 44.5 per 10,000
+
+### Emergency Care Deficiencies
+
+- Snakebites alone cause 58,000 deaths annually, 70% in rural areas where delays and lack of first-aid knowledge prevail
+- Many victims first turn to traditional healers, worsening outcomes
+
+### Women's Health & Menstrual Hygiene Gaps
+
 - Disorders like PCOS (6–10% prevalence) and endometriosis remain underdiagnosed, with low awareness in rural India
 - Only 42–43% of adolescent girls use hygienic menstrual products; poor practices increase risk of infections
 - Stigma and taboos limit discussion and treatment, while awareness of government schemes like MHS and Jan Aushadhi remains low, adding travel and wage-loss costs for women
