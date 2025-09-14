@@ -1,16 +1,5 @@
 # LUMEN - Localized Unified Medical Engine for Triage
 
-**Team LUMEN**
-Sanchit Nipanikar - Final Yr, CS, VIT
-Priyal Patange - Final Yr, IT, VIT
-Paras Patil - Final Yr, IT, VIT
-Kshitij Kalrao - Final Yr, IT, VIT
-
-**Institution:** Bansilal Ramnath Agarwal Charitable Trust's Vishwakarma Institute of Technology, Pune
-(An autonomous Institute of Savitribai Phule Pune University)
-
-**Theme:** AI for Societal Good + Learn Smarter: AI in Education + Open Innovation
-
 A modern, multilingual, AI‑powered healthcare assistant designed for India. LUMEN integrates triage, specialist guidance, PEARL CT reconstruction, lab report analysis, government scheme discovery, emergency education, and specialized women's health modules into a single, accessible product.
 
 > Disclaimer: LUMEN is a research prototype and does not replace professional medical advice.
@@ -43,6 +32,23 @@ A modern, multilingual, AI‑powered healthcare assistant designed for India. LU
 ## Problem Statement
 
 How do we ensure that rural women and families get timely, affordable, and reliable healthcare? Why are preventable deaths still common in villages despite government schemes and technology progress?
+
+India's rural healthcare system faces critical gaps that result in preventable deaths, untreated conditions, and rising costs.
+
+### Limited Access & Workforce Shortage
+
+- Over 900 million rural residents (65% of the population) face inadequate infrastructure, with 16% fewer PHCs and 50% fewer CHCs than required
+- Shortages are severe: 8% PHCs lack doctors, 38% lack lab technicians, and workforce density is 20.6 per 10,000, far below the WHO norm of 44.5
+- Doctor/nurse/midwife density is 20.6 per 10,000 vs WHO recommendation 44.5 per 10,000
+
+### Emergency Care Deficiencies
+
+- Snakebites alone cause 58,000 deaths annually, 70% in rural areas where delays and lack of first-aid knowledge prevail
+- Many victims first turn to traditional healers, worsening outcomes
+
+### Women's Health & Menstrual Hygiene Gaps
+
+=======
 
 India's rural healthcare system faces critical gaps that result in preventable deaths, untreated conditions, and rising costs.
 
