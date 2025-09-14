@@ -1,16 +1,5 @@
 # LUMEN - Localized Unified Medical Engine for Triage
 
-**Team LUMEN**
-Sanchit Nipanikar - Final Yr, CS, VIT
-Priyal Patange - Final Yr, IT, VIT
-Paras Patil - Final Yr, IT, VIT
-Kshitij Kalrao - Final Yr, IT, VIT
-
-**Institution:** Bansilal Ramnath Agarwal Charitable Trust's Vishwakarma Institute of Technology, Pune
-(An autonomous Institute of Savitribai Phule Pune University)
-
-**Theme:** AI for Societal Good + Learn Smarter: AI in Education + Open Innovation
-
 A modern, multilingual, AI‑powered healthcare assistant designed for India. LUMEN integrates triage, specialist guidance, PEARL CT reconstruction, lab report analysis, government scheme discovery, emergency education, and specialized women's health modules into a single, accessible product.
 
 > Disclaimer: LUMEN is a research prototype and does not replace professional medical advice.
