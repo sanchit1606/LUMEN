@@ -561,11 +561,6 @@ export default function Technical() {
           <Card title="Features">
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <Stethoscope className="text-brand-blue" />
-                <div>
-                  <div className="font-medium">
-                    4.1 Symptoms‑Based Diagnosis & Guidance
                 <div className="flex items-start gap-3">
                   <Stethoscope className="text-brand-blue" />
                   <div>
@@ -592,13 +587,6 @@ export default function Technical() {
                   </div>
                 </div>
               </div>
-              </div>
-              <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <Activity className="text-brand-teal" />
-                <div>
-                  <div className="font-medium">4.4 PEARL CT Reconstruction</div>
-                  <p>Low‑dose previews with guidance.</p>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <Activity className="text-brand-teal" />
@@ -632,8 +620,6 @@ export default function Technical() {
                       4.7 Preliminary Triage & Emergency Education
                     </div>
                     <p>Audio‑guided first aid tiles.</p>
-                  </div>
-                  <p>Audio‑guided first aid tiles.</p>
                   </div>
                 </div>
               </div>
@@ -705,126 +691,10 @@ export default function Technical() {
           </div>
         </div>
 
-        {/* Tech Stack (Prior) */}
-        <div id="techstack-prior" className="mt-6">
+        {/* Tech Stack */}
+        <div id="techstack" className="mt-6">
           <div className="grid lg:grid-cols-1 gap-6">
-            <Card title="Tech Stack (Prior)">
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm table-auto">
-                  <thead>
-                    <tr className="text-left text-xs text-muted-foreground">
-                      <th className="px-3 py-2">Layer</th>
-                      <th className="px-3 py-2">Technology / Tools Used</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="border-t">
-                      <td className="px-3 py-2 align-top">Frontend</td>
-                        <td className="px-3 py-2 align-top">
-                        React (TypeScript) + Next.js, Tailwind CSS (for UI), Multilingual support
-                        </td>
-                    </tr>
-                    <tr className="border-t">
-                      <td className="px-3 py-2 align-top">Backend / API</td>
-                        <td className="px-3 py-2 align-top">
-                        FastAPI (Python) – REST/GraphQL API server, integrates AI/ML models and handles routing
-                        </td>
-                      </tr>
-                      <tr className="border-t">
-                      <td className="px-3 py-2 align-top">Database</td>
-                        <td className="px-3 py-2 align-top">
-                        PostgreSQL (structured medical records, lab values, CT metadata)
-                        </td>
-                    </tr>
-                    <tr className="border-t">
-                      <td className="px-3 py-2 align-top">Cache & Queue</td>
-                        <td className="px-3 py-2 align-top">
-                        Redis (cache + task queue) + Celery (background jobs like CT reconstruction, PDF parsing)
-                        </td>
-                      </tr>
-                      <tr className="border-t">
-                      <td className="px-3 py-2 align-top">Vector Database</td>
-                        <td className="px-3 py-2 align-top">
-                        Weaviate / Pinecone (semantic search on medical guidelines, govt schemes)
-                        </td>
-                      </tr>
-                      <tr className="border-t">
-                      <td className="px-3 py-2 align-top">Object Storage</td>
-                        <td className="px-3 py-2 align-top">
-                        AWS S3 / MinIO (self-hosted alternative) – for CT scans, lab reports, medical images
-                        </td>
-                      </tr>
-                      <tr className="border-t">
-                      <td className="px-3 py-2 align-top">AI/ML Core</td>
-                        <td className="px-3 py-2 align-top">
-                        PyTorch + Hugging Face Transformers (embeddings, multilingual models, PEARL CT, dermatology AI, lab parser) + OpenAI APIs (GPT-4o, Whisper, DALL·E)
-                        </td>
-                      </tr>
-                      <tr className="border-t">
-                      <td className="px-3 py-2 align-top">Security</td>
-                        <td className="px-3 py-2 align-top">
-                        JWT + OAuth2, TLS/SSL, AES-256 encryption, HIPAA/GDPR compliance
-                        </td>
-                      </tr>
-                      <tr className="border-t">
-                      <td className="px-3 py-2 align-top">Infrastructure & Deployment</td>
-                        <td className="px-3 py-2 align-top">
-                        Docker + Kubernetes (K8s) on AWS/GCP/Azure with GPU nodes; CDN for static assets
-                        </td>
-                      </tr>
-                      <tr className="border-t">
-                        <td className="px-3 py-2 align-top">AI Specialist Summaries</td>
-                        <td className="px-3 py-2 align-top">gpt-4o-mini</td>
-                        <td className="px-3 py-2 align-top">Summarizes AI-ML Model outputs into doctor-style report</td>
-                      </tr>
-                      <tr className="border-t">
-                        <td className="px-3 py-2 align-top">Lab Report Analyzer</td>
-                        <td className="px-3 py-2 align-top">gpt-4o</td>
-                        <td className="px-3 py-2 align-top">Interprets OCR lab values and explains results in patient-friendly terms</td>
-                      </tr>
-                      <tr className="border-t">
-                        <td className="px-3 py-2 align-top">Govt Schemes Assistant</td>
-                        <td className="px-3 py-2 align-top">text-embedding-3-small + gpt-4o-mini</td>
-                        <td className="px-3 py-2 align-top">Retrieves and explains govt health scheme eligibility in simple language.</td>
-                      </tr>
-                      <tr className="border-t">
-                        <td className="px-3 py-2 align-top">Emergency Protocols</td>
-                        <td className="px-3 py-2 align-top">gpt-4o-mini</td>
-                        <td className="px-3 py-2 align-top">Gives fast, step-by-step emergency medical instructions.</td>
-                      </tr>
-                      <tr className="border-t">
-                        <td className="px-3 py-2 align-top">Voice Input (ASR)</td>
-                        <td className="px-3 py-2 align-top">whisper-1</td>
-                        <td className="px-3 py-2 align-top">Converts patient speech to text for symptom entry</td>
-                      </tr>
-                      <tr className="border-t">
-                        <td className="px-3 py-2 align-top">Voice Output (TTS)</td>
-                        <td className="px-3 py-2 align-top">gpt-4o-audio / Azure TTS</td>
-                        <td className="px-3 py-2 align-top">Delivers AI responses as a natural voice for accessibility.</td>
-                      </tr>
-                      <tr className="border-t">
-                        <td className="px-3 py-2 align-top">Chatbot</td>
-                        <td className="px-3 py-2 align-top">gpt-4o</td>
-                        <td className="px-3 py-2 align-top">Provides 24/7 conversational support, guiding users across triage, lab results, schemes, and emergencies</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              <div className="mt-6 flex justify-center">
-                <TechStackGrid />
-              </div>
-            </Card>
-          </div>
-        </div>
-
-        {/* Feasibility */}
-        <div id="feasibility" className="mt-6 grid lg:grid-cols-1 gap-6">
-          <Card title="Feasibility">
-                <div className="grid sm:grid-cols-2 gap-4 text-sm">
-        {/* Tech Stack (Prior) */}
-        <div id="techstack-prior" className="mt-6">
-          <div className="grid lg:grid-cols-1 gap-6">
-            <Card title="Tech Stack (Prior)">
+            <Card title="Tech Stack">
               <div className="overflow-x-auto">
                 <table className="w-full text-sm table-auto">
                   <thead>
@@ -922,58 +792,6 @@ export default function Technical() {
                     </ul>
                   </div>
                   <p className="mt-2">Assessment: Existing technologies are sufficient. Only CT reconstruction pipeline requires GPU resources, which are available on cloud platforms.</p>
-                  </div>
-                <div className="p-4 bg-card/80 border border-border rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 hover:scale-105 transition-all duration-300">
-                  <div className="font-medium">7.2 Operational Feasibility</div>
-                  <div className="mt-2">
-                    <div className="font-medium">Problem Fit:</div>
-                    <p>Addresses rural healthcare gaps (900M+ residents), triage delays, and lab follow-up inefficiencies.</p>
-                  </div>
-                  <div className="mt-2">
-                    <div className="font-medium">Ease of Operation:</div>
-                    <ul className="list-disc pl-5 space-y-1">
-                      <li>Multilingual voice-first chatbot lowers digital literacy barriers.</li>
-                      <li>Offline-first design ensures use even in low-connectivity areas.</li>
-                    </ul>
-                  </div>
-                  <p className="mt-2">Assessment: Operationally feasible, since workflows mirror real-world healthcare interactions (symptom → guidance → follow-up).</p>
-          </div>
-        </div>
-
-              {/* Right column */}
-              <div className="space-y-4">
-                <div className="p-4 bg-card/80 border border-border rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 hover:scale-105 transition-all duration-300">
-                  <div className="font-medium">7.3 Economic Feasibility</div>
-                  <div className="mt-2">
-                    <div className="font-medium">Prototype Cost:</div>
-                    <p>Minimal (free tiers: Hugging Face, Netlify, Firebase).</p>
-              </div>
-                  <div className="mt-2">
-                    <div className="font-medium">Production Cost:</div>
-                    <p>API usage (OpenAI GPT, Whisper), GPU compute (CT), and storage (AWS S3).</p>
-              </div>
-                  <div className="mt-2">
-                    <div className="font-medium">ROI:</div>
-                <ul className="list-disc pl-5 space-y-1">
-                      <li>Reducing preventable deaths (e.g., 58,000 annual snakebite fatalities).</li>
-                      <li>Saving costs from unnecessary clinic visits & repeated CT scans.</li>
-                </ul>
-              </div>
-                  <p className="mt-2">Assessment: Strong cost-benefit justification; socially impactful and scalable.</p>
-                </div>
-                <div className="p-4 bg-card/80 border border-border rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 hover:scale-105 transition-all duration-300">
-                <div className="font-medium">7.4 Legal Feasibility</div>
-                  <div className="mt-2">
-                    <div className="font-medium">Compliance Requirements:</div>
-                <ul className="list-disc pl-5 space-y-1">
-                      <li>Data protection → GDPR/HIPAA-like standards.</li>
-                      <li>Informed consent → required for data use.</li>
-                </ul>
-              </div>
-                  <p className="mt-2">Assessment: Legally feasible with proper compliance in production; no major barriers.</p>
-                </div>
-                <div className="p-4 bg-card/80 border border-border rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 hover:scale-105 transition-all duration-300">
-                <div className="font-medium">7.5 Market Feasibility</div>
                 </div>
                 <div className="p-4 bg-card/80 border border-border rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 hover:scale-105 transition-all duration-300">
                   <div className="font-medium">7.2 Operational Feasibility</div>
@@ -1026,7 +844,6 @@ export default function Technical() {
                 </div>
                 <div className="p-4 bg-card/80 border border-border rounded-lg shadow-sm hover:shadow-lg transform hover:-translate-y-1 hover:scale-105 transition-all duration-300">
                   <div className="font-medium">7.5 Market Feasibility</div>
-
                   <div className="mt-2">
                     <div className="font-medium">Target Users:</div>
                     <p>900M+ rural/semi-urban Indians lacking timely healthcare.</p>
