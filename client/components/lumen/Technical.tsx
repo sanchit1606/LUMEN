@@ -347,7 +347,7 @@ export default function Technical() {
                 <span>view ppt</span>
               </a>
               <a
-                href="https://drive.google.com/file/d/1gpUfYnjZYOgk3kEzBMn7zZXn0b85xMdS/view?usp=sharing"
+                href="https://drive.google.com/file/d/10lJUY1iXO52l9iigFL96m1BYTQ_MfPCQ/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="download-button"
