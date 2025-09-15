@@ -122,13 +122,13 @@ export default function DevelopersPage() {
             />
             <DeveloperCard
               name="Priyal"
-              photo="/Priyal.jpg"
+              photo="/developers/Priyal.jpg"
               github="https://github.com/priyal-username"
               linkedin="https://www.linkedin.com/in/priyal-patange-b56904282/"
             />
             <DeveloperCard
               name="Paras"
-              photo="/paras.jpg"
+              photo="/developers/paras.jpg"
               cv="https://cdn.builder.io/o/assets%2Fe15e28af565249a28e9186f98d17e5d6%2F66d8999ca3824dfbb375211f9e3cd583?alt=media&token=a08f01d1-98a2-4513-81d1-b41e227a816d&apiKey=e15e28af565249a28e9186f98d17e5d6"
               github="https://github.com/paraspatil11"
               linkedin="https://www.linkedin.com/in/paras-patil-11o5/"

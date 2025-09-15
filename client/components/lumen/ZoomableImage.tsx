@@ -79,12 +79,13 @@ export default function ZoomableImage({ src, alt }: Props) {
         onMouseUp={onMouseUp}
         onMouseLeave={onMouseLeave}
         onDoubleClick={onDblClick}
-        className="relative h-[460px] w-full overflow-hidden rounded-xl border bg-white cursor-grab active:cursor-grabbing"
+        className="relative w-full overflow-hidden rounded-xl border bg-white cursor-grab active:cursor-grabbing"
+        style={{ minHeight: '300px', maxHeight: '600px' }}
       >
         <img
           src={src}
           alt={alt}
-          className="select-none will-change-transform"
+          className="select-none will-change-transform w-full h-auto max-w-full"
           style={{
             transform: `translate(${pos.x}px, ${pos.y}px) scale(${scale})`,
             transformOrigin: "0 0",

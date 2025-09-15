@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
+import { Highlighter } from "@/components/magicui/highlighter";
 import LabAnalyzer from "./LabAnalyzer";
 import PyramidLoader from "./PyramidLoader";
 
@@ -115,9 +116,19 @@ export default function Features() {
         <h2 className="text-3xl sm:text-4xl font-bold text-center">
           Powerful Features
         </h2>
-        <p className="mt-3 text-center text-muted-foreground max-w-2xl mx-auto">
-          Each module includes interactive examples and micro‑interactions.
-        </p>
+        <div className="mt-4 text-center">
+          <p className="leading-relaxed">
+            Currently,{" "}
+            <Highlighter action="underline" color="#FF9800">
+              backend models and functionalities have been disabled to avoid high API usage costs
+            </Highlighter>{" "}
+            and{" "}
+            <Highlighter action="highlight" color="#87CEFA">
+              prevent exposure of sensitive API keys
+            </Highlighter>{" "}
+            .
+          </p>
+        </div>
 
         <div className="mt-10">
           <BentoGrid className="lg:grid-rows-2 lg:grid-cols-3 md:grid-cols-2 grid-cols-1">

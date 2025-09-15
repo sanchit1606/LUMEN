@@ -93,9 +93,6 @@ export default function Emergency() {
             <h2 className="text-3xl sm:text-4xl font-bold">
               Emergency First Aid
             </h2>
-            <p className="text-muted-foreground">
-              Auto‑play carousel with pictorial + audio guide.
-            </p>
           </div>
         </div>
 

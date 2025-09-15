@@ -7,9 +7,6 @@ export default function Contact() {
         <div className="grid lg:grid-cols-2 gap-8 items-start">
           <div>
             <h2 className="text-3xl sm:text-4xl font-bold">Get in Touch</h2>
-            <p className="mt-2 text-muted-foreground">
-              Contact form with glowing border inputs.
-            </p>
             <form
               className="mt-6 space-y-3"
               onSubmit={(e) => e.preventDefault()}

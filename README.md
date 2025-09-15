@@ -14,16 +14,7 @@ A modern, multilingual, AI‑powered healthcare assistant designed for India. LU
 - [Tech Stack](#tech-stack)
 - [User Flow](#user-flow)
 - [System Architecture](#system-architecture)
-- [How It Works](#how-it-works)
-- [Module Details](#module-details)
-  - [Symptoms‑Based Diagnosis &amp; Guidance](#symptoms-based-diagnosis--guidance)
-  - [AI Specialist Modules](#ai-specialist-modules)
-  - [PEARL CT Reconstruction](#pearl-ct-reconstruction)
-  - [Lab Report Analyzer &amp; Follow‑Up Generator](#lab-report-analyzer--follow-up-generator)
-  - [Government Schemes &amp; Benefits Assistant](#government-schemes--benefits-assistant)
-  - [Preliminary Triage &amp; Emergency Education](#preliminary-triage--emergency-education)
 - [Impact](#impact)
-- [Ethical Design &amp; Safety](#ethical-design--safety)
 - [Local Development](#local-development)
 - [References (IEEE‑style)](#references-ieee-style)
 
@@ -47,8 +38,6 @@ India's rural healthcare system faces critical gaps that result in preventable d
 - Many victims first turn to traditional healers, worsening outcomes
 
 ### Women's Health & Menstrual Hygiene Gaps
-
-=======
 
 India's rural healthcare system faces critical gaps that result in preventable deaths, untreated conditions, and rising costs.
 
@@ -77,36 +66,53 @@ LUMEN: a multilingual, voice‑first, AI assistant tailored for India, integrati
 
 ### Normal Features
 
-1. Symptoms‑Based Diagnosis & Guidance
+1. **Symptoms‑Based Diagnosis & Guidance**
    - Accepts multimodal inputs (text/audio/image).
-   - Probable diagnosis with severity categorization (Green/Yellow/Red).
-   - Clear next steps in voice, text, and visuals (home care, clinic, or emergency).
-2. AI Specialist Modules
-   - Dermatology, Radiology, Cardiology (extensible).
-   - Patient‑friendly advice and clinician‑grade summaries.
-3. Multilingual Voice‑First Chatbot
-   - Five Indian languages initially.
-   - Whisper for ASR; GPT for natural, empathetic explanations.
+   - Analyzes reported symptoms and provides a probable diagnosis with severity categorization (Green/Yellow/Red).
+   - Offers clear next-step guidance (home care, clinic visit, or emergency attention), along with easy-to-follow instructions in voice, text, and visual formats.
 
-### Unique Differentiators
+2. **AI Specialist Modules**
+   - Dermatology, Radiology, Cardiology, etc., offering diagnostic suggestions from multimodal inputs.
+   - Provides both patient-friendly advice and clinician-level summaries.
 
-1. PEARL Integration - Personalized Estimated Anatomic Reconstruction & Lifecare
-   - Hybrid CT pipeline: geometry‑aware modeling (PerX2CT) → diffusion refinement (XctDiff) → NeRF detail polishing (SAX‑NeRF).
-   - Generates estimated CT volumes with voxel‑level uncertainty to enable safer, lower‑dose follow‑up imaging.
-2. Lab Report Analyzer & Follow‑Up Generator
-   - Parses PDFs/images, compares values to age/sex reference ranges, flags abnormalities, provides diet/lifestyle advice, and recommends follow‑ups.
-   - Example: Hemoglobin 9.8 g/dL (F, 30y) → “Eat iron‑rich foods such as spinach, dal, jaggery; consider vitamin‑C fruits; consult if symptomatic.” Severity: Moderate (1–2 weeks).
-3. Government Schemes & Benefits Assistant
-   - Retrieves up‑to‑date national/state health schemes; explains eligibility and steps in local language.
-   - Example: “Dialysis help in UP?” → PMJAY/UP State Health Scheme guidance, docs needed, and helpline 14555. Eligibility: Green.
-4. Preliminary Triage & Emergency Education
-   - Life‑saving steps for snakebite, drowning, burns, electric shock.
-   - 3‑step pictorials + audio playback in the chosen language.
-5. GynaeCare - Specialized Women's Health Module
-   - Symptom Screening & Awareness: Private Q&A to flag possible issues like PCOD/PCOS (irregular cycles, acne, hormonal imbalance) and Endometriosis (severe pelvic pain, painful periods)
-   - Guided Next Steps: Early red-flag alerts on when to seek medical help, plus low-cost self-care tips (diet, activity, stress management)
-   - Sanitation & Hygiene Education: Safe use of cloth pads, menstrual cups, biodegradable pads, with proper disposal methods (ash pits, eco-friendly options)
-   - Govt Schemes & Support: Links to Jan Aushadhi (affordable medicines), Menstrual Hygiene Scheme (MHS), and connects users with local ASHA/anganwadi workers
+3. **Multilingual Voice‑First Chatbot**
+   - Supports five Indian languages.
+   - Uses Whisper for ASR and GPT for natural, empathetic explanations.
+
+### Unique Differentiator Features
+
+1. **PEARL Integration - Personalized Estimated Anatomic Reconstruction & Lifecare**
+   - A local, hybrid CT reconstruction engine combining geometry-aware modeling (PerX2CT), diffusion refinement (XctDiff), and NeRF detail polishing (SAX-NeRF).
+   - Generates estimated CT volumes with voxel-level uncertainty, enabling safer, lower-dose imaging for follow-up.
+
+2. **Lab Report Analyzer & Follow‑Up Generator**
+   - Parses uploaded lab reports (PDF/image), compares values with age- and sex-specific reference ranges, flags abnormalities, and generates simple explanations with diet/lifestyle advice.
+   
+   **Example:**
+   - Input (Lab Report): 30-year-old female, Hemoglobin 9.8 g/dL (Normal: 12.0–15.5), RBC 3.6 million/µL (Normal: 4.2–5.4).
+   - Output (System): "Your blood count is lower than normal, which may cause tiredness. Eat iron-rich foods such as spinach, dal, jaggery, and vitamin C fruits. Please consult a doctor if you feel weak or if levels fall further."
+   - Severity tier: Moderate — follow-up within 1–2 weeks.
+
+3. **Government Schemes & Benefits Assistant**
+   - Retrieves up-to-date national and state health schemes from a knowledge base and explains eligibility + steps in local language.
+   
+   **Example:**
+   - Input (User Query): "My father in Uttar Pradesh needs dialysis - is there any government help?"
+   - Output (System): "Yes. Under Ayushman Bharat – PMJAY and the UP State Health Scheme, eligible patients get free dialysis at government hospitals. Carry Aadhaar and Ayushman Bharat card to the hospital registration desk. You can also call 14555 for support."
+
+4. **Preliminary Triage & Emergency Education**
+   - Offers step-by-step, life-saving instructions for common emergencies where delays cost lives - such as snakebite, drowning, burns, or electric shock.
+   - Provides clear voice, text, and visual guidance in local language (e.g., CPR steps, immobilization after snakebite, "stop-drop-roll" for fire injuries).
+   
+   **Example:**
+   - Input: "A child has stopped breathing after drowning."
+   - Output: "Call for emergency help immediately. Lay the child flat, check breathing. If not breathing, start CPR: 30 chest compressions, 2 rescue breaths. Continue until medical help arrives."
+
+5. **GynaeCare - Specialized Women's Health Module**
+   - **Symptom Screening & Awareness**: Private Q&A to flag possible issues like PCOD/PCOS (irregular cycles, acne, hormonal imbalance) and Endometriosis (severe pelvic pain, painful periods).
+   - **Guided Next Steps**: Early red-flag alerts on when to seek medical help, plus low-cost self-care tips (diet, activity, stress management).
+   - **Sanitation & Hygiene Education**: Safe use of cloth pads, menstrual cups, biodegradable pads, with proper disposal methods (ash pits, eco-friendly options).
+   - **Govt Schemes & Support**: Links to Jan Aushadhi (affordable medicines), Menstrual Hygiene Scheme (MHS), and connects users with local ASHA/anganwadi workers.
 
 ## Role of OpenAI Tools
 
@@ -122,10 +128,6 @@ LUMEN: a multilingual, voice‑first, AI assistant tailored for India, integrati
 | Chatbot                   | gpt-4o                               | Provides 24/7 conversational support, guiding users across triage, lab results, schemes, and emergencies |
 
 ## Tech Stack
-
-<table>
-<tr>
-<td width="50%">
 
 ### Detailed Technology Breakdown
 
@@ -143,7 +145,7 @@ LUMEN: a multilingual, voice‑first, AI assistant tailored for India, integrati
 
 ## User Flow
 
-![LUMEN User Flow Diagram](./user%20flow%20d.png)
+<img src="./public/user-flow-diagram.png" alt="LUMEN User Flow Diagram">
 
 The user flow diagram illustrates the complete journey from user interaction to system output:
 
@@ -156,7 +158,7 @@ The user flow diagram illustrates the complete journey from user interaction to 
 
 ## System Architecture
 
-![LUMEN System Architecture Diagram](./sys%20arch.png)
+<img src="./public/system-architecture-diagram.png" alt="LUMEN System Architecture Diagram">
 
 ### Core Components
 
@@ -214,42 +216,6 @@ This repo ships a production‑ready React + Express monorepo with shared types.
 - Data: Vector DB (e.g., pgvector/Weaviate/FAISS/Supabase) for grounding; file/object storage for uploads.
 - Privacy: CT models can run on device/edge where feasible; PHI never logged.
 
-## How It Works
-
-1. User Input (text/audio/image, language selection)
-2. AI Processing (Whisper → retrieval‑augmented GPT → module logic)
-3. Clear Outputs (diagnosis, severity, steps, visuals, links)
-4. User Action (self‑care, clinic, emergency, benefits enrollment)
-
-## Module Details
-
-### Symptoms‑Based Diagnosis & Guidance
-
-- Severity tiers: Green (self‑care), Yellow (clinic), Red (emergency).
-- Outputs include do/don’t lists, local language voice prompts, and follow‑up timing.
-
-### AI Specialist Modules
-
-- Tabs for Dermatology, Radiology, Cardiology; extensible registry for more modules.
-- Dual output: layperson narrative + clinician summary.
-
-### PEARL CT Reconstruction
-
-- Pipeline: PerX2CT (geometry) → XctDiff (denoising/refinement) → SAX‑NeRF (detail polish).
-- Exposes uncertainty maps and dose‑reduction configuration for follow‑up studies.
-
-### Lab Report Analyzer & Follow‑Up Generator
-
-- Field extraction, reference range comparison, abnormality ranking.
-- Recommendations aligned to reputable guidelines; configurable locality and diet preferences.
-
-### Government Schemes & Benefits Assistant
-
-- Retrieval over central/state scheme corpus; eligibility/steps generation; helplines and docs.
-
-### Preliminary Triage & Emergency Education
-
-- Scenario tiles (snakebite, drowning, burns, electric shock) → 3‑step pictorial + audio.
 
 ## Feasibility
 
@@ -295,6 +261,17 @@ This repo ships a production‑ready React + Express monorepo with shared types.
 - **Competition:** Existing health apps (Practo, 1mg) focus on urban users; none combine triage + lab reports + CT + schemes in one system
 - **Assessment:** High demand, underserved market, unique positioning
 
+## Novelty
+
+| Feature | Traditional Systems | LUMEN |
+|---------|-------------------|-------|
+| **CT Imaging** | Hospital CT scans (₹4,000–₹6,000); no AI low-dose alternatives | PEARL CT: Low-dose AI reconstruction with uncertainty maps → safer & cheaper follow-ups |
+| **Lab Report Analysis** | 1mg, Apollo 24/7 show raw values only | AI Analyzer: Flags abnormalities + gives lifestyle/diet advice in simple local language |
+| **Government Schemes Access** | Info scattered on portals (Ayushman Bharat website, state portals) | Integrated Assistant: Explains eligibility + steps in voice/text for each patient's condition |
+| **Emergency Education** | Missing in health apps; patients rely on hearsay or healers | Built-in Protocols: CPR, snakebite, burns → step-by-step local language guidance |
+| **Women's Health (LUMEN GynaeCare)** | Flo, Clue (cycle tracking); Practo (urban gyne consults); NGOs like Goonj (hygiene awareness). Each addresses only one aspect | Integrated GynaeCare: Private symptom screening (PCOD, endometriosis) + hygiene education (safe pad use, disposal) + govt scheme linkage (MHS, Jan Aushadhi) → all in one, voice-first & rural-friendly |
+| **Costing** | Doctor visit: ₹300–₹500, travel to city hospital: ₹800–₹1,500, CT scan: ₹4,000–₹6,000, follow-ups ~₹1,000 | Cuts costs by 50–70% through local AI triage, fewer city visits, and reduced repeat scans |
+
 ## Impact
 
 ### Quantitative Benefits
@@ -328,15 +305,14 @@ This repo ships a production‑ready React + Express monorepo with shared types.
 
 - Collaborate with NGOs and hospitals to integrate LUMEN into field operations, enabling real-time reporting and referrals from remote areas to specialized centers
 
+### Offline-First Mobile App
+
+- Develop a fully-featured Android app with offline-first capabilities, integrating preloaded emergency protocols, government schemes, and first-aid guidance for even deeper rural penetration
+
 ### Predictive Healthcare Analytics
 
 - Leverage patient data and interaction history to provide predictive health risk analytics and early warnings for chronic diseases
 
-## Ethical Design & Safety
-
-- Privacy by design; on‑device/edge inference where possible.
-- Retrieval‑grounded answers; conservative escalation; transparent uncertainty.
-- Clear disclaimers and escalation triggers; no replacement for clinicians.
 
 ## Local Development
 
@@ -359,13 +335,15 @@ OPENAI_API_KEY=...
 VECTOR_DB_URL=...
 ```
 
-## References (IEEE‑style)
+## References
 
-[1] "Healthcare Access in Rural Communities in India," Ballard Brief, 18‑Dec‑2024. Available: Ballard Brief
+References (IEEE style)
+
+[1] "Healthcare Access in Rural Communities in India," Ballard Brief, 18-Dec-2024. Available: Ballard Brief
 
 [2] A. P. Ugargol et al., "In search of a fix to the primary health care chasm in India," PMC, 2023. PMC
 
-[3] A. Nair et al., "Workforce problems at rural public health‑centres in India," Human Resources for Health, vol. 19, Art. 147, 2022. BioMed Central
+[3] A. Nair et al., "Workforce problems at rural public health-centres in India," Human Resources for Health, vol. 19, Art. 147, 2022. BioMed Central
 
 [4] W. Suraweera et al., "Trends in snakebite deaths in India from 2000 to 2019," eLife, vol. 9, e54076, 2020. eLifePMC
 
@@ -373,7 +351,7 @@ VECTOR_DB_URL=...
 
 [6] "India still struggles with rural doctor shortages … doctor, nurses, and midwives per 10,000 people," ResearchGate, 2025. ResearchGateAxios
 
-[7] "Healthcare Access in Rural India," docboxmed.com, 23‑Sep‑2024. DocBox
+[7] "Healthcare Access in Rural India," docboxmed.com, 23-Sep-2024. DocBox
 
 [8] "Multiple incidents of snakebites in UP ... approx 50,000 deaths annually," Times of India, recent. The Times of India
 
