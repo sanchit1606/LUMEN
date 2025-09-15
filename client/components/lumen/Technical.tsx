@@ -339,7 +339,7 @@ export default function Technical() {
             <div className="mt-4 flex items-center justify-center gap-6">
               {/* View PPT button (to the left of View DOCX) */}
               <a
-                href="https://drive.google.com/file/d/1zkuGMKm5-_qfjHgm3HxxT1d6XCeYxL-0/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1u7KnUjfNQhfbYzn75LpHTYYqU6aV5MgM/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="ppt-button"
