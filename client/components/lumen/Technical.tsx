@@ -338,11 +338,16 @@ export default function Technical() {
             </div>
             <div className="mt-4 flex items-center justify-center gap-6">
               {/* View PPT button (to the left of View DOCX) */}
-              <button className="ppt-button" type="button" aria-label="view ppt">
-                <span>view ppt</span>
-              </button>
               <a
-                href="https://cdn.builder.io/o/assets%2Fe8cc9787598e48f9b1b2ad55c5185cb9%2F571a64ddd41b44f284f7d10cabf79f52?alt=media&token=4b269a9a-f6c3-4192-b784-d6c79921c82c&apiKey=e8cc9787598e48f9b1b2ad55c5185cb9"
+                href="https://drive.google.com/file/d/1zkuGMKm5-_qfjHgm3HxxT1d6XCeYxL-0/view?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ppt-button"
+              >
+                <span>view ppt</span>
+              </a>
+              <a
+                href="https://drive.google.com/file/d/1gpUfYnjZYOgk3kEzBMn7zZXn0b85xMdS/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="download-button"
