@@ -339,7 +339,7 @@ export default function Technical() {
             <div className="mt-4 flex items-center justify-center gap-6">
               {/* View PPT button (to the left of View DOCX) */}
               <a
-                href="https://drive.google.com/file/d/1u7KnUjfNQhfbYzn75LpHTYYqU6aV5MgM/view?usp=drive_link"
+                href="https://www.canva.com/design/DAGyyT4id88/gHwsLe3XDFYSk5YurzKYwQ/edit?utm_content=DAGyyT4id88&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="ppt-button"
