@@ -193,10 +193,28 @@ export default function DiagnosisPage() {
       <Navbar />
       
       <main className="pt-32 pb-20">
+        <style>{`
+          .diagnosis-glass {
+            box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+            backdrop-filter: blur(6px);
+            border-radius: 17px;
+            transition: all 0.5s;
+          }
+          .diagnosis-glass:hover {
+            border: 1px solid #000;
+            transform: scale(1.02);
+          }
+          .diagnosis-glass:active {
+            transform: scale(0.98) rotateZ(1deg);
+          }
+        `}</style>
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold mb-4">Symptoms-Based Diagnosis & Guidance</h1>
+            <h1 className="text-4xl font-bold mb-4 font-surgena">Symptoms-Based Diagnosis & Guidance</h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Share your symptoms through text, voice, or document upload for AI-powered health guidance
             </p>
@@ -225,7 +243,7 @@ export default function DiagnosisPage() {
 
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Input Section */}
-            <Card>
+            <Card className="diagnosis-glass">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <FileText className="h-5 w-5" />
@@ -391,7 +409,7 @@ export default function DiagnosisPage() {
             </Card>
 
             {/* Output Section */}
-            <Card>
+            <Card className="diagnosis-glass">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <AlertCircle className="h-5 w-5" />

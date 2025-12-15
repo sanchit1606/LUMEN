@@ -25,6 +25,7 @@
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "multer": "^2.0.2",
+    "svg-dotted-map": "^2.0.1",
     "zod": "^3.25.76"
   },
   "devDependencies": {

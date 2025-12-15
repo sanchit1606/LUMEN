@@ -44,7 +44,7 @@ export default function Features() {
       Icon: Brain,
       name: "AI Specialist Modules",
       description: "Dermatology, Radiology, and Cardiology specialist AI modules.",
-      href: "/",
+      href: "/developers",
       cta: "Learn more",
       background: (
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-indigo-50/30"></div>
@@ -95,12 +95,26 @@ export default function Features() {
       poweredBy: "GPT-4 / GPT-5"
     },
 
+    // 5.7 GynaeCare
+    {
+      Icon: Heart,
+      name: "GynaeCare",
+      description: "Personalized women's health guidance and triage for gynecological care.",
+      href: "/gynaecare",
+      cta: "Explore GynaeCare",
+      background: (
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-indigo-50/30"></div>
+      ),
+      className: "lg:col-span-1 lg:row-span-1 lg:col-start-2 lg:row-start-3",
+      poweredBy: "GPT-4 / GPT-5"
+    },
+
     // 5.6 Emergency Education
     {
       Icon: Heart,
       name: "Emergency Education",
       description: "Interactive emergency response training with visual guides.",
-      href: "/",
+      href: "/technical",
       cta: "Learn more",
       background: (
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-indigo-50/30"></div>
@@ -131,7 +145,7 @@ export default function Features() {
         </div>
 
         <div className="mt-10">
-          <BentoGrid className="lg:grid-rows-2 lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
+          <BentoGrid className="lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
             {features.map((feature) => (
               <BentoCard 
                 key={feature.name}

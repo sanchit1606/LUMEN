@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "@/components/lumen/Navbar";
 import Footer from "@/components/lumen/Footer";
+import { DottedMap } from "@/components/lumen/DottedMap";
 import LabAnalyzer, { AnalyzeResponse } from "@/components/lumen/LabAnalyzer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -310,26 +311,181 @@ function FollowUpPlanner({ result }: { result: AnalyzeResponse | null }) {
 }
 
 export default function LabPage() {
-  const [result, setResult] = React.useState<AnalyzeResponse | null>(null);
-
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <main className="flex-1 pt-24 pb-16">
-        <section className="container space-y-6">
-          <h1 className="text-3xl font-bold">
-            Lab Report Analyzer & Follow‑Up
-          </h1>
-          <Card>
-            <CardHeader>
-              <CardTitle>Upload Lab Report</CardTitle>
+      <main className="relative flex-1 pt-24 pb-16 overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 -z-10 opacity-90">
+          <DottedMap
+            width={900}
+            height={540}
+            mapSamples={9000}
+            dotRadius={0.3}
+            className="w-full h-full scale-150 text-gray-900"
+          />
+        </div>
+        <section className="relative max-w-3xl mx-auto px-4 space-y-10 text-center z-10">
+          <style>{`
+            /* Glassy card style (inspired by Uiverse.io by SteveBloX) */
+            .lab-glass {
+              box-sizing: border-box;
+              background: rgba(255, 255, 255, 0.7);
+              border: 1px solid rgba(255, 255, 255, 0.9);
+              box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+              backdrop-filter: blur(6px);
+              border-radius: 17px;
+              transition: all 0.5s;
+            }
+            .lab-glass:hover {
+              border: 1px solid #000;
+              transform: scale(1.03);
+            }
+            .lab-glass:active {
+              transform: scale(0.98) rotateZ(1.7deg);
+            }
+          `}</style>
+          <div className="space-y-4">
+            <h1 className="text-4xl sm:text-5xl font-extrabold text-center font-surgena">
+              Lab Report Analyzer
+            </h1>
+            {/* From Uiverse.io by andrew-manzyk */}
+            <div className="flex justify-center">
+              <style>{`
+                .loader {
+                  --color-one: #ffbf48;
+                  --color-two: #be4a1d;
+                  --color-three: #ffbf4780;
+                  --color-four: #bf4a1d80;
+                  --color-five: #ffbf4740;
+                  --time-animation: 2s;
+                  --size: 1;
+                  position: relative;
+                  border-radius: 50%;
+                  transform: scale(var(--size));
+                  box-shadow:
+                    0 0 25px 0 var(--color-three),
+                    0 20px 50px 0 var(--color-four);
+                  animation: colorize calc(var(--time-animation) * 3) ease-in-out infinite;
+                }
+                .loader::before {
+                  content: "";
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100px;
+                  height: 100px;
+                  border-radius: 50%;
+                  border-top: solid 1px var(--color-one);
+                  border-bottom: solid 1px var(--color-two);
+                  background: linear-gradient(180deg, var(--color-five), var(--color-four));
+                  box-shadow:
+                    inset 0 10px 10px 0 var(--color-three),
+                    inset 0 -10px 10px 0 var(--color-four);
+                }
+                .loader .box {
+                  width: 100px;
+                  height: 100px;
+                  background: linear-gradient(
+                    180deg,
+                    var(--color-one) 30%,
+                    var(--color-two) 70%
+                  );
+                  mask: url(#clipping);
+                  -webkit-mask: url(#clipping);
+                }
+                .loader svg {
+                  position: absolute;
+                }
+                .loader svg #clipping {
+                  filter: contrast(15);
+                  animation: roundness calc(var(--time-animation) / 2) linear infinite;
+                }
+                .loader svg #clipping polygon {
+                  filter: blur(7px);
+                }
+                .loader svg #clipping polygon:nth-child(1) {
+                  transform-origin: 75% 25%;
+                  transform: rotate(90deg);
+                }
+                .loader svg #clipping polygon:nth-child(2) {
+                  transform-origin: 50% 50%;
+                  animation: rotation var(--time-animation) linear infinite reverse;
+                }
+                .loader svg #clipping polygon:nth-child(3) {
+                  transform-origin: 50% 60%;
+                  animation: rotation var(--time-animation) linear infinite;
+                  animation-delay: calc(var(--time-animation) / -3);
+                }
+                .loader svg #clipping polygon:nth-child(4) {
+                  transform-origin: 40% 40%;
+                  animation: rotation var(--time-animation) linear infinite reverse;
+                }
+                .loader svg #clipping polygon:nth-child(5) {
+                  transform-origin: 40% 40%;
+                  animation: rotation var(--time-animation) linear infinite reverse;
+                  animation-delay: calc(var(--time-animation) / -2);
+                }
+                .loader svg #clipping polygon:nth-child(6) {
+                  transform-origin: 60% 40%;
+                  animation: rotation var(--time-animation) linear infinite;
+                }
+                .loader svg #clipping polygon:nth-child(7) {
+                  transform-origin: 60% 40%;
+                  animation: rotation var(--time-animation) linear infinite;
+                  animation-delay: calc(var(--time-animation) / -1.5);
+                }
+                @keyframes rotation {
+                  0% { transform: rotate(0deg); }
+                  100% { transform: rotate(360deg); }
+                }
+                @keyframes roundness {
+                  0% { filter: contrast(15); }
+                  20% { filter: contrast(3); }
+                  40% { filter: contrast(3); }
+                  60% { filter: contrast(15); }
+                  100% { filter: contrast(15); }
+                }
+                @keyframes colorize {
+                  0% { filter: hue-rotate(0deg); }
+                  20% { filter: hue-rotate(-30deg); }
+                  40% { filter: hue-rotate(-60deg); }
+                  60% { filter: hue-rotate(-90deg); }
+                  80% { filter: hue-rotate(-45deg); }
+                  100% { filter: hue-rotate(0deg); }
+                }
+              `}</style>
+              <div className="loader">
+                <svg width="100" height="100" viewBox="0 0 100 100">
+                  <defs>
+                    <mask id="clipping">
+                      <polygon points="0,0 100,0 100,100 0,100" fill="black"></polygon>
+                      <polygon points="25,25 75,25 50,75" fill="white"></polygon>
+                      <polygon points="50,25 75,75 25,75" fill="white"></polygon>
+                      <polygon points="35,35 65,35 50,65" fill="white"></polygon>
+                      <polygon points="35,35 65,35 50,65" fill="white"></polygon>
+                      <polygon points="35,35 65,35 50,65" fill="white"></polygon>
+                      <polygon points="35,35 65,35 50,65" fill="white"></polygon>
+                    </mask>
+                  </defs>
+                </svg>
+                <div className="box"></div>
+              </div>
+            </div>
+            <p className="text-muted-foreground text-sm sm:text-base">
+              How it works: upload your lab report (PNG/JPEG/PDF/DOC/DOCX) → Donut (Hugging Face DocVQA, free)
+              reads the text and tables → we extract key values, compare against typical adult ranges, and return
+              a concise summary with suggested next steps.
+            </p>
+          </div>
+
+          <Card className="lab-glass">
+            <CardHeader className="text-center">
+              <CardTitle className="text-lg font-semibold">Upload & Analyze</CardTitle>
             </CardHeader>
             <CardContent>
-              <LabAnalyzer onResult={setResult} />
+              <LabAnalyzer />
             </CardContent>
           </Card>
-
-          <FollowUpPlanner result={result} />
         </section>
       </main>
       <Footer />

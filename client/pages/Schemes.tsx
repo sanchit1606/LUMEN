@@ -292,20 +292,14 @@ export default function SchemesPage() {
       <Navbar />
       <main className="py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-start justify-between gap-6">
-            <div>
-              <h1 className="text-3xl sm:text-4xl font-bold">
-                Government Schemes & Benefits Assistant
-              </h1>
-              <p className="mt-2 text-muted-foreground max-w-2xl">
-                Explore and access national and state-specific healthcare and
-                welfare schemes relevant to LUMEN users. All links go to
-                official portals.
-              </p>
-            </div>
-            <div className="hidden md:block">
-              <HexSocket />
-            </div>
+          <div className="text-center max-w-3xl mx-auto">
+            <h1 className="text-3xl sm:text-4xl font-bold">
+              Government Schemes & Benefits Assistant
+            </h1>
+            <p className="mt-3 text-muted-foreground">
+              Explore and access national and state-specific healthcare and welfare schemes
+              relevant to LUMEN users. All links go to official portals.
+            </p>
           </div>
 
           <div className="mt-8 grid md:grid-cols-2 gap-6 items-start">

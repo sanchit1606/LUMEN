@@ -29,8 +29,15 @@ export default function LabAnalyzer({
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!file) return;
-    if (!/^image\/(png|jpe?g)$/i.test(file.type)) {
-      setErr("Please upload a PNG or JPEG image (convert PDF to image first).");
+    const allowed = [
+      "image/png",
+      "image/jpeg",
+      "application/pdf",
+      "application/msword",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    ];
+    if (!allowed.includes(file.type)) {
+      setErr("Please upload PNG/JPEG, PDF, or DOC/DOCX.");
       return;
     }
     if (file.size > 5 * 1024 * 1024) {
@@ -75,29 +82,74 @@ export default function LabAnalyzer({
 
   return (
     <div>
-      <form onSubmit={onSubmit} className="space-y-3">
-        <label className="mt-1 grid place-items-center h-40 rounded-xl border-2 border-dashed border-brand-blue/40 bg-secondary cursor-pointer">
+      <style>{`
+        /* CTA button styling aligned with PEARL reconstruction button */
+        .cta-btn {
+          height: 46px;
+          width: 220px;
+          position: relative;
+          background-color: transparent;
+          cursor: pointer;
+          border: 2px solid #252525;
+          overflow: hidden;
+          border-radius: 30px;
+          color: #333;
+          transition: all 0.5s ease-in-out;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          text-decoration: none;
+        }
+        .cta-btn .btn-txt {
+          z-index: 1;
+          font-weight: 800;
+          letter-spacing: 2px;
+          font-size: 0.85rem;
+          text-transform: uppercase;
+        }
+        .cta-btn.type1::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          transition: all 0.5s ease-in-out;
+          background-color: #333;
+          border-radius: 30px;
+          visibility: hidden;
+          height: 10px;
+          width: 10px;
+          z-index: -1;
+        }
+        .cta-btn:hover {
+          box-shadow: 1px 1px 200px #252525;
+          color: #fff;
+          border: none;
+        }
+        .cta-btn.type1:hover::after {
+          visibility: visible;
+          transform: scale(100) translateX(2px);
+        }
+      `}</style>
+      <form onSubmit={onSubmit} className="space-y-4">
+        <label className="mt-1 grid place-items-center h-64 w-[26rem] sm:h-72 sm:w-[30rem] mx-auto rounded-xl border-2 border-dashed border-brand-blue/40 bg-secondary cursor-pointer text-center px-4">
           <input
             type="file"
-            accept="image/png,image/jpeg,application/pdf"
+            accept="image/png,image/jpeg,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
             className="hidden"
             onChange={(e) => setFile(e.target.files?.[0] || null)}
           />
           <span className="text-sm">
             {file
               ? file.name
-              : "Click to choose PNG/JPEG (convert PDF → PNG first)"}
+              : "Click to choose PNG / JPEG / PDF / DOC / DOCX"}
           </span>
         </label>
-        <p className="text-xs text-muted-foreground">
-          Tip: keep files ≤5MB. If a 502 occurs, wait a few seconds and retry.
+        <p className="text-xs text-muted-foreground text-center">
+          Using Donut (DocVQA) on Hugging Face — free to use. Keep files ≤5MB. If a 502 occurs, wait and retry.
         </p>
-        <div className="flex gap-2">
-          <button
-            disabled={!file || loading}
-            className="btn-cta disabled:opacity-50"
-          >
-            {loading ? "Analyzing…" : "Analyze"}
+        <div className="flex gap-2 justify-center">
+          <button disabled={!file || loading} className="cta-btn type1 disabled:opacity-50">
+            <span className="btn-txt">{loading ? "Analyzing…" : "Analyze"}</span>
           </button>
           {file && (
             <button
