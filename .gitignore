@@ -25,3 +25,6 @@ dist-ssr
 
 .config/
 !.env
+
+# PEARL CT - Python backend project (separate repository)
+PEARL CT/
