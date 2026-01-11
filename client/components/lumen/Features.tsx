@@ -114,7 +114,7 @@ export default function Features() {
       Icon: Heart,
       name: "Emergency Education",
       description: "Interactive emergency response training with visual guides.",
-      href: "/technical",
+      href: "/#emergency",
       cta: "Learn more",
       background: (
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-indigo-50/30"></div>

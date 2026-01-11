@@ -11,7 +11,7 @@
     ]
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --open",
     "build": "npm run build:client && npm run build:server",
     "build:client": "vite build",
     "build:server": "vite build --config vite.config.server.ts",
@@ -24,6 +24,9 @@
     "@radix-ui/react-icons": "^1.3.2",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
+    "gsap": "^3.14.2",
+    "lenis": "^1.3.16",
+    "locomotive-scroll": "^4.1.4",
     "multer": "^2.0.2",
     "svg-dotted-map": "^2.0.1",
     "zod": "^3.25.76"

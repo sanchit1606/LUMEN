@@ -44,6 +44,104 @@ export default function DiagnosisPage() {
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL?.trim();
+
+  const normalizeSeverity = (value?: string): DiagnosisResult["severity"] => {
+    const v = (value || "").toLowerCase();
+    if (v.includes("high") || v.includes("red") || v.includes("emergency")) return "high";
+    if (v.includes("medium") || v.includes("moderate") || v.includes("yellow")) return "medium";
+    if (v.includes("low") || v.includes("mild") || v.includes("green")) return "low";
+    return "medium";
+  };
+
+  const normalizeRecommendations = (value: any): string[] => {
+    if (Array.isArray(value)) return value.map(String).filter(Boolean);
+    if (typeof value === "string") {
+      return value
+        .split(/\n|;|•|-/)
+        .map((item) => item.trim())
+        .filter(Boolean);
+    }
+    return [];
+  };
+
+  const buildResultFromResponse = (data: any, inputText: string): DiagnosisResult => {
+    const diagnosis =
+      data?.diagnosis ||
+      data?.output ||
+      data?.response ||
+      data?.message ||
+      "No diagnosis returned by the service.";
+
+    const severity = normalizeSeverity(data?.severity || data?.triageLevel || data?.priority);
+
+    const recommendations =
+      normalizeRecommendations(data?.recommendations || data?.actions || data?.suggestions) ?? [];
+
+    const urgency =
+      data?.urgency ||
+      data?.alert ||
+      (severity === "high"
+        ? "Seek immediate medical attention."
+        : "Monitor symptoms and seek care if they worsen.");
+
+    const followUp =
+      data?.followUp ||
+      data?.follow_up ||
+      data?.next_steps ||
+      "Follow up with a clinician if symptoms persist or worsen.";
+
+    return {
+      diagnosis,
+      severity,
+      recommendations:
+        recommendations.length > 0
+          ? recommendations
+          : [
+              "Rest, hydrate, and monitor symptoms.",
+              "Seek medical care if symptoms worsen or persist."
+            ],
+      urgency,
+      followUp
+    };
+  };
+
+  const callDiagnosisService = async (inputText: string, source: "text" | "audio" | "file") => {
+    const endpoint = webhookUrl || "/api/chat/symptoms";
+    const payload = webhookUrl
+      ? {
+          symptoms: inputText,
+          source,
+          timestamp: new Date().toISOString(),
+        }
+      : {
+          prompt: inputText,
+        };
+
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+      mode: "cors",
+    });
+
+    const text = await response.text();
+    let data: any = undefined;
+    try {
+      data = text ? JSON.parse(text) : undefined;
+    } catch {
+      data = { raw: text };
+    }
+
+    if (!response.ok) {
+      const detail = data?.error || data?.message || text || `HTTP ${response.status}`;
+      throw new Error(`Service error: ${detail}`);
+    }
+
+    return buildResultFromResponse(data, inputText);
+  };
 
   const startRecording = async () => {
     try {
@@ -82,11 +180,10 @@ export default function DiagnosisPage() {
   const processAudio = async (audioBlob: Blob) => {
     setIsProcessing(true);
     try {
-      // Simulate audio processing with Whisper
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // TODO: replace mock transcription with real STT
       const mockTranscription = "I have been experiencing headaches and fever for the past 3 days. The headache is persistent and gets worse in the evening.";
       setTranscribedText(mockTranscription);
-      await processDiagnosis(mockTranscription);
+      await processDiagnosis(mockTranscription, "audio");
     } catch (err) {
       setError("Failed to process audio. Please try again.");
     } finally {
@@ -123,10 +220,9 @@ export default function DiagnosisPage() {
   const processFile = async (file: File) => {
     setIsProcessing(true);
     try {
-      // Simulate file processing
-      await new Promise(resolve => setTimeout(resolve, 3000));
+      // TODO: replace mock extraction with OCR / parser
       const mockExtractedText = "Patient reports chronic fatigue, joint pain, and difficulty sleeping. Symptoms have persisted for 2 weeks. No fever reported.";
-      await processDiagnosis(mockExtractedText);
+      await processDiagnosis(mockExtractedText, "file");
     } catch (err) {
       setError("Failed to process file. Please try again.");
     } finally {
@@ -134,29 +230,32 @@ export default function DiagnosisPage() {
     }
   };
 
-  const processDiagnosis = async (inputText: string) => {
+  const buildFallbackResult = (inputText: string): DiagnosisResult => ({
+    diagnosis:
+      "Based on the provided symptoms, monitor closely and consult a clinician if anything worsens.",
+    severity: inputText.toLowerCase().includes("fever") ? "medium" : "low",
+    recommendations: [
+      "Rest, hydrate, and track your temperature twice daily.",
+      "Seek medical care if symptoms worsen or do not improve in 48 hours.",
+    ],
+    urgency: "Monitor symptoms and seek care if they escalate.",
+    followUp: "Follow up with a clinician if there is no improvement within 3-5 days.",
+  });
+
+  const processDiagnosis = async (inputText: string, source: "text" | "audio" | "file" = "text") => {
+    setIsProcessing(true);
     try {
-      // Simulate AI diagnosis processing
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      // Mock diagnosis result
-      const mockResult: DiagnosisResult = {
-        diagnosis: "Based on the symptoms described, this appears to be a viral infection with possible tension headaches. The combination of fever and persistent headaches suggests an upper respiratory tract infection.",
-        severity: inputText.toLowerCase().includes("severe") || inputText.toLowerCase().includes("emergency") ? "high" : 
-                 inputText.toLowerCase().includes("pain") || inputText.toLowerCase().includes("fever") ? "medium" : "low",
-        recommendations: [
-          "Rest and maintain adequate hydration",
-          "Take over-the-counter fever reducers as needed",
-          "Monitor symptoms for any worsening",
-          "Seek medical attention if fever exceeds 102°F (39°C)"
-        ],
-        urgency: inputText.toLowerCase().includes("severe") ? "Seek immediate medical attention" : "Monitor symptoms, consult a healthcare provider if they worsen",
-        followUp: "Follow up with your primary care physician within 3-5 days if symptoms persist or worsen"
-      };
-      
-      setResult(mockResult);
+      const diagnosis = await callDiagnosisService(inputText, source);
+      setResult(diagnosis);
+      setError(null);
     } catch (err) {
-      setError("Failed to generate diagnosis. Please try again.");
+      console.error("Diagnosis error:", err);
+      const message =
+        err instanceof Error ? err.message : "Failed to generate diagnosis. Please try again.";
+      setError(message);
+      setResult(buildFallbackResult(inputText));
+    } finally {
+      setIsProcessing(false);
     }
   };
 
@@ -166,7 +265,6 @@ export default function DiagnosisPage() {
       return;
     }
     setError(null);
-    setIsProcessing(true);
     processDiagnosis(textInput);
   };
 
@@ -193,28 +291,10 @@ export default function DiagnosisPage() {
       <Navbar />
       
       <main className="pt-32 pb-20">
-        <style>{`
-          .diagnosis-glass {
-            box-sizing: border-box;
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
-            backdrop-filter: blur(6px);
-            border-radius: 17px;
-            transition: all 0.5s;
-          }
-          .diagnosis-glass:hover {
-            border: 1px solid #000;
-            transform: scale(1.02);
-          }
-          .diagnosis-glass:active {
-            transform: scale(0.98) rotateZ(1deg);
-          }
-        `}</style>
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold mb-4 font-surgena">Symptoms-Based Diagnosis & Guidance</h1>
+            <h1 className="text-4xl font-bold mb-4">Symptoms-Based Diagnosis & Guidance</h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Share your symptoms through text, voice, or document upload for AI-powered health guidance
             </p>
@@ -243,7 +323,7 @@ export default function DiagnosisPage() {
 
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Input Section */}
-            <Card className="diagnosis-glass">
+            <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <FileText className="h-5 w-5" />
@@ -409,7 +489,7 @@ export default function DiagnosisPage() {
             </Card>
 
             {/* Output Section */}
-            <Card className="diagnosis-glass">
+            <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <AlertCircle className="h-5 w-5" />

@@ -21,7 +21,7 @@ const slides = [
       "Keep limb immobilized",
       "Reach hospital quickly",
     ],
-    videoUrl: "https://www.youtube.com/embed/ryJo_A-rJ6Y",
+    videoUrl: "https://www.youtube.com/embed/YzYz_LlqGP4",
   },
   {
     title: "CPR",
@@ -39,7 +39,7 @@ const slides = [
       "Cover with clean cloth",
       "Do not pop blisters",
     ],
-    videoUrl: "https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb",
+    videoUrl: "https://www.youtube.com/embed/KdSrLbdwOqE",
   },
   {
     title: "Electric Shock",
@@ -48,7 +48,7 @@ const slides = [
       "Do not touch victim directly",
       "Call emergency",
     ],
-    videoUrl: "https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb",
+    videoUrl: "https://www.youtube.com/embed/26WJzcKUx_I",
   },
 ];
 
@@ -73,17 +73,6 @@ export default function Emergency() {
     return stop;
   }, [playing, play, stop]);
 
-  const speak = (text: string) => {
-    try {
-      new SpeechSynthesisUtterance();
-    } catch {
-      return;
-    }
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = "en-IN";
-    window.speechSynthesis.cancel();
-    window.speechSynthesis.speak(u);
-  };
 
   return (
     <section id="emergency" className="py-20">
@@ -135,15 +124,7 @@ export default function Emergency() {
                         );
                       })}
                     </div>
-                    <div className="mt-4 flex items-center gap-2 flex-nowrap">
-                      <InteractiveHoverButton
-                        onClick={() =>
-                          speak(`${s.title}. ${s.steps.join(". ")}`)
-                        }
-                        className="min-w-[120px] px-3 py-1.5 text-sm"
-                      >
-                        Play Audio
-                      </InteractiveHoverButton>
+                    <div className="mt-4 flex items-center justify-center">
                       <HeroVideoDialog
                         videoSrc={s.videoUrl}
                         trigger={
@@ -158,6 +139,12 @@ export default function Emergency() {
               );
             })}
           </div>
+        </div>
+
+        <div className="mt-8 text-center">
+          <p className="text-sm text-muted-foreground">
+            <span className="font-semibold text-foreground">Pro tip:</span> Watch all Final Destination chapters
+          </p>
         </div>
       </div>
     </section>

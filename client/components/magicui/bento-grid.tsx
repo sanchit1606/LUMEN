@@ -71,6 +71,7 @@ const BentoCard = ({
           border: 2px solid #c3c6ce;
           transition: 0.5s ease-out;
           overflow: visible;
+          cursor: pointer;
         }
 
         .card-details {
@@ -134,6 +135,16 @@ const BentoCard = ({
       <div
         key={name}
         className={cn("feature-card col-span-1", className)}
+        onClick={handleClick}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            handleClick();
+          }
+        }}
+        aria-label={`Navigate to ${name}`}
         {...props}
       >
         <div className="card-details">
@@ -162,7 +173,10 @@ const BentoCard = ({
         
         <button
           className="card-button"
-          onClick={handleClick}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleClick();
+          }}
         >
           {cta}
         </button>

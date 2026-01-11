@@ -33,7 +33,7 @@ export default function Contact() {
             </p>
           </div>
           <div>
-            <h3 className="font-semibold">Nearest Hospital Connector — Pune</h3>
+            <h3 className="font-semibold">Near Me - Pune</h3>
             <div className="mt-3 aspect-video overflow-hidden rounded-xl border">
               <iframe
                 title="Pune Map"
